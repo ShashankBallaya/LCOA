@@ -905,20 +905,20 @@ if(reduce){
 
   const TEAM=[
    
-    {role:'President', name:'Drishti Sinha', mono:'P'},
-    {role:'Vice President', name:'[Name]', mono:'V'},
-    {role:'Secretary',      name:'[Name]', mono:'S'},
-    {role:'Treasurer',      name:'[Name]', mono:'T'},
-    {role:'Marketing',   name:'[Name]', mono:'M'},
-    {role:'Advisor',   name:'[Name]', mono:'A'},
+    {role:'President', name:'Leo Drishti Sinha', photo:'team/president.webp', mono:'P'},
+    {role:'Vice President', name:'Leo Abhishek Ajit', mono:'V'},
+    {role:'Secretary',      name:'Leo Khushboo Patel', mono:'S'},
+    {role:'Treasurer',      name:'Leo Khushi Sonawane', mono:'T'},
+    {role:'Marketing Director',   name:'Leo Dhruti Ajmera', mono:'M'},
+    {role:'Advisor',   name:'MJF Lion Dhirendra Sinha', mono:'A'},
   ];
   const SLOTS=[
-    {l:6,  t:4,  r:-7},
-    {l:62, t:2,  r:6},
-    {l:33, t:25, r:-4},
-    {l:0,  t:43, r:7},
-    {l:66, t:37, r:5},
-    {l:80, t:15, r:8}
+    {l:2,  t:6,  r:-7},
+    {l:26, t:1,  r:4},
+    {l:50, t:5,  r:-3},
+    {l:74, t:2,  r:7},
+    {l:6,  t:44, r:6},
+    {l:70, t:44, r:-5}
   ];
 
   /* ---- pressed-flower wall (hero-style depth layers) + dragonflies ---- */
@@ -983,7 +983,9 @@ if(reduce){
     const m=TEAM[i], s=SLOTS[i%SLOTS.length];
     const p=document.createElement('div'); p.className='polaroid';
     p.style.left=s.l+'%'; p.style.top=s.t+'%';
-    p.innerHTML='<div class="photo" data-mono="'+m.mono+'"><div class="dev"></div></div><div class="cap"><div class="pn">'+m.name+'</div><div class="pr">'+m.role+'</div></div>';
+    const ph = m.photo ? ' style="background-image:url('+m.photo+');background-size:cover;background-position:center"' : '';
+    const mo = m.photo ? '' : ' data-mono="'+m.mono+'"';
+    p.innerHTML='<div class="photo"'+mo+ph+'><div class="dev"></div></div><div class="cap"><div class="pn">'+m.name+'</div><div class="pr">'+m.role+'</div></div>';
     polaroids.appendChild(p);
     const dev=p.querySelector('.dev'), photo=p.querySelector('.photo'), cap=p.querySelector('.cap');
     i++;
