@@ -95,7 +95,7 @@ h1.title .word{display:inline-block;color:#fdfaf3;text-shadow:0 2px 16px rgba(0,
 .cd-cap{font-family:'Pinyon Script',cursive;font-size:clamp(1.15rem,3.2vw,1.7rem);color:var(--blush);margin-top:1rem;opacity:0}
 
 /* ---- Built on Bonds slogan-reveal section ---- */
-.bonds{position:relative;min-height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--green-deep) 0%,#274430 42%,#1A2C1E 100%);padding:6rem 1.5rem;text-align:center;perspective:1400px}
+.bonds{position:relative;min-height:100svh;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,var(--green-deep) 0%,#274430 42%,#1A2C1E 100%);padding:6rem 1.5rem;text-align:center;perspective:1400px;z-index:8}
 .bonds-botanicals{position:absolute;inset:0;z-index:1;pointer-events:none}
 .petal{position:absolute;will-change:transform;background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 10px 20px rgba(0,0,0,.34))}
 .bonds-glow{position:absolute;left:50%;top:54%;width:min(80vw,720px);height:min(80vw,720px);transform:translate(-50%,-50%);z-index:1;pointer-events:none;background:radial-gradient(circle, rgba(228,201,138,.16), rgba(228,201,138,0) 62%);filter:blur(8px)}
@@ -104,7 +104,7 @@ h1.title .word{display:inline-block;color:#fdfaf3;text-shadow:0 2px 16px rgba(0,
 .sleeve-wrap{position:relative;width:100%;aspect-ratio:1/.82;transform-style:preserve-3d;cursor:pointer}
 /* the card tucked inside the sleeve */
 .bond-card{position:absolute;left:9%;right:9%;top:8%;height:64%;z-index:2;border-radius:14px;background:linear-gradient(160deg,#fdf6cf 0%,#f8ecae 55%,#f2e29c 100%);box-shadow:0 14px 30px rgba(0,0,0,.32);transform-origin:50% 100%;transform:translateY(40%) rotateX(0deg);will-change:transform;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8% 9% 13%;overflow:hidden}
-.bond-card::before{content:"";position:absolute;inset:9px;border-radius:9px;border:1px solid rgba(198,161,91,.55);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);pointer-events:none}
+.bond-card::before{content:"";position:absolute;inset:9px;border-radius:9px;border:1.4px dashed rgba(198,161,91,.6);box-shadow:inset 0 0 0 1px rgba(255,255,255,.4);pointer-events:none}
 .bond-card::after{content:"";position:absolute;inset:0;border-radius:14px;pointer-events:none;background:radial-gradient(140% 90% at 50% -10%, rgba(255,255,255,.5), rgba(255,255,255,0) 45%),radial-gradient(120% 80% at 80% 120%, rgba(198,161,91,.16), rgba(198,161,91,0) 50%)}
 .bond-rule{width:54px;height:0;border:0;border-top:1px solid rgba(198,161,91,.7);position:relative;margin:0 0 1rem;opacity:0}
 .bond-rule::before,.bond-rule::after{content:"";position:absolute;top:50%;width:5px;height:5px;border:1px solid rgba(198,161,91,.8);transform:translateY(-50%) rotate(45deg);background:rgba(253,246,207,.6)}
@@ -112,12 +112,44 @@ h1.title .word{display:inline-block;color:#fdfaf3;text-shadow:0 2px 16px rgba(0,
 .bond-card p{font-family:'Cormorant Garamond',serif;color:#42502c;font-size:clamp(.78rem,1.6vw,1.08rem);line-height:1.55;max-width:34ch;opacity:0;position:relative}
 .bond-card p::first-line{letter-spacing:.01em}
 /* the sleeve / pocket that sits in FRONT of the card's lower half */
-.sleeve{position:absolute;left:0;right:0;bottom:0;height:68%;z-index:3;border-radius:12px 12px 16px 16px;background:linear-gradient(165deg,#a9c0a0,#8fae86 60%,#80a178);box-shadow:0 22px 46px rgba(0,0,0,.4), inset 0 2px 0 rgba(255,255,255,.25);display:flex;align-items:flex-end;justify-content:center;padding-bottom:8%;overflow:hidden}
-.sleeve::before{content:"";position:absolute;left:-30%;top:-60%;width:80%;height:160%;background:linear-gradient(105deg, rgba(255,255,255,.22), rgba(255,255,255,0) 60%);transform:rotate(8deg);pointer-events:none}
-.sleeve::after{content:"";position:absolute;left:0;right:0;top:0;height:34%;background:linear-gradient(to bottom, rgba(0,0,0,.16), rgba(0,0,0,0));pointer-events:none}
-.sleeve-mouth{position:absolute;left:5%;right:5%;top:0;height:14px;border-radius:0 0 8px 8px;background:linear-gradient(to bottom, rgba(0,0,0,.22), rgba(0,0,0,0));z-index:2;pointer-events:none}
-.sleeve-label{font-family:'Birds of Paradise','Cormorant Garamond',serif;color:#fbf6e8;font-size:clamp(1.7rem,5vw,2.9rem);line-height:1;text-shadow:0 2px 10px rgba(40,60,40,.4);position:relative;z-index:3;pointer-events:none}
-.bonds-eyebrow{position:absolute;top:clamp(2.4rem,7vh,4.5rem);left:0;right:0;z-index:6;font-family:'Jost';font-weight:500;letter-spacing:.42em;text-transform:uppercase;font-size:clamp(.6rem,1.4vw,.72rem);color:var(--gold-light);opacity:.92}
+/* ===== "Built on Bonds" leather pocket ===== */
+.sleeve{
+  position:absolute;left:0;right:0;bottom:0;height:68%;z-index:3;
+  border-radius:9px 9px 20px 20px;
+  background:linear-gradient(157deg,#dab465 0%,#c39a47 32%,#a67d31 68%,#875f24 100%);
+  /* botanical-green alt: linear-gradient(157deg,#8fb083 0%,#779869 36%,#5f7e54 72%,#4c6a45 100%) */
+  box-shadow:inset 0 2px 0 rgba(255,248,222,.42), inset 0 -14px 26px rgba(60,40,10,.42);
+  filter:drop-shadow(0 22px 34px rgba(46,30,8,.45));
+  display:flex;align-items:flex-end;justify-content:center;
+  padding-bottom:9%;overflow:hidden;
+  -webkit-mask:radial-gradient(33% 28% at 50% -16%, transparent 99%, #000 100%);
+          mask:radial-gradient(33% 28% at 50% -16%, transparent 99%, #000 100%);
+}
+/* dashed saddle stitching */
+.sleeve::before{
+  content:"";position:absolute;inset:15% 7% 9%;
+  border:1.6px dashed rgba(255,248,225,.68);border-radius:5px 5px 13px 13px;
+  pointer-events:none;
+}
+/* warm sheen + base shadow */
+.sleeve::after{
+  content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(112deg, rgba(255,255,255,.32), rgba(255,255,255,0) 40%),
+             radial-gradient(120% 90% at 50% 120%, rgba(70,46,12,.4), rgba(70,46,12,0) 55%);
+}
+/* embossed dot cluster, top-right (reuses the .sleeve-mouth div) */
+.sleeve-mouth{
+  position:absolute;top:7%;right:6%;width:26%;height:20%;z-index:2;pointer-events:none;
+  background:radial-gradient(circle at 2px 2px, rgba(255,248,222,.55) 1.5px, transparent 2px) 0 0/11px 11px;
+  -webkit-mask:radial-gradient(125% 125% at 100% 0%, #000 42%, transparent 78%);
+          mask:radial-gradient(125% 125% at 100% 0%, #000 42%, transparent 78%);
+  opacity:.65;
+}
+.sleeve-label{
+  font-family:'Birds of Paradise','Cormorant Garamond',serif;color:var(--ivory);
+  font-size:clamp(1.7rem,5vw,2.9rem);line-height:1;position:relative;z-index:3;pointer-events:none;
+  text-shadow:0 2px 10px rgba(50,32,8,.5),0 0 18px rgba(255,240,200,.18);
+}.bonds-eyebrow{position:absolute;top:clamp(2.4rem,7vh,4.5rem);left:0;right:0;z-index:6;font-family:'Jost';font-weight:500;letter-spacing:.42em;text-transform:uppercase;font-size:clamp(.6rem,1.4vw,.72rem);color:var(--gold-light);opacity:.92}
 .bonds-hint{position:absolute;left:0;right:0;bottom:clamp(2rem,7vh,4rem);z-index:6;font-family:'Pinyon Script',cursive;font-size:clamp(1.3rem,3.6vw,1.9rem);color:var(--ivory);opacity:.86}
 
 
