@@ -252,28 +252,9 @@ html.cur-on input,html.cur-on textarea{cursor:text!important}
 .rsvp-body{font-family:'Cormorant Garamond';font-size:clamp(1.05rem,2.3vw,1.32rem);line-height:1.6;color:var(--cream);max-width:42ch;margin:0 auto 2.3rem}
 .form-wrap{position:relative}
 .rsvp-form{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.1rem;text-align:left}
-.field{display:flex;flex-direction:column;gap:.4rem
-.field-full{
-  grid-column:1 / -1;
-}
-.field textarea{
-  resize:vertical;
-  min-height:120px;
-}
+.field{display:flex;flex-direction:column;gap:.4rem}
 .field label{font-family:'Jost';letter-spacing:.16em;text-transform:uppercase;font-size:.62rem;color:var(--gold-light)}
-.field input,
-.field select,
-.field textarea{
-  backdrop-filter:blur(8px);
-}
-
-.field textarea{
-  line-height:1.6;
-}
-
-.field:focus-within label{
-  color:var(--gold);
-}
+.field input,.field select,.field textarea{font-family:'Cormorant Garamond';font-size:1.02rem;color:var(--ivory);background:rgba(244,237,225,.05);border:1px solid rgba(198,161,91,.35);border-radius:8px;padding:.7rem .85rem;outline:none;width:100%;transition:border-color .25s,box-shadow .25s,background .25s}
 .field input::placeholder,.field textarea::placeholder{color:rgba(244,237,225,.4)}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold-light);box-shadow:0 0 0 3px rgba(198,161,91,.18);background:rgba(244,237,225,.08)}
 .field select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23E4C98A' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right .85rem center;background-size:11px;padding-right:2.2rem}
@@ -292,31 +273,7 @@ html.cur-on input,html.cur-on textarea{cursor:text!important}
 .seal-stamp svg{width:44px;height:44px}
 .done-title{font-family:'Cormorant Garamond';font-weight:500;font-size:clamp(1.5rem,4vw,2rem);color:var(--blush)}
 .done-sub{font-family:'Cormorant Garamond';font-size:1.1rem;line-height:1.5;color:var(--cream);max-width:34ch;text-align:center}
-@media (max-width:560px){
-  .rsvp-form{
-    grid-template-columns:1fr;
-  }
-
-  .field-full{
-    grid-column:auto;
-  }
-
-  .rsvp{
-    padding:5rem 1rem;
-  }
-
-  .rsvp-title{
-    font-size:clamp(2rem,12vw,3rem);
-  }
-
-  .rsvp-body{
-    font-size:1rem;
-  }
-
-  .field textarea{
-    min-height:100px;
-  }
-}
+@media (max-width:560px){.rsvp-form{grid-template-columns:1fr}}
 
 /* ============ FOOTER ============ */
 .site-footer{position:relative;background:linear-gradient(180deg,#101d13,#0c160f);padding:clamp(4rem,7vw,4.6rem) 1.5rem 2rem;overflow:hidden}
@@ -633,60 +590,30 @@ html.cur-on input,html.cur-on textarea{cursor:text!important}
     <div class="form-wrap">
       <form class="rsvp-form" id="rsvpForm" novalidate>
         <div class="field">
-  <label for="rsvpName">Full Name</label>
-  <input id="rsvpName" type="text" required>
-</div>
-
-<div class="field">
-  <label for="rsvpDob">Date of Birth</label>
-  <input id="rsvpDob" type="date" required>
-</div>
-
-<div class="field">
-  <label for="rsvpAge">Age</label>
-  <input id="rsvpAge" type="number" min="16" max="99" required>
-</div>
-
-<div class="field">
-  <label for="rsvpEmail">Email</label>
-  <input id="rsvpEmail" type="email" required>
-</div>
-
-<div class="field">
-  <label for="rsvpPhone">WhatsApp Number</label>
-  <input id="rsvpPhone" type="tel" required>
-</div>
-
-<div class="field field-full">
-  <label for="rsvpAddress">Address</label>
-  <textarea id="rsvpAddress" rows="3" required></textarea>
-</div>
-
-<div class="field">
-  <label for="rsvpOccupation">Occupation</label>
-  <input id="rsvpOccupation" type="text" required>
-</div>
-
-<div class="field">
-  <label for="rsvpEducation">Education</label>
-  <input id="rsvpEducation" type="text" placeholder="Under Grad / Graduate / Post Graduate" required>
-</div>
-
-<div class="field field-full">
-  <label for="rsvpReason">Why do you want to join Leo Club?</label>
-  <textarea id="rsvpReason" rows="4" required></textarea>
-</div>
-
-<div class="field field-full">
-  <label for="rsvpContribution">How would you like to contribute?</label>
-  <textarea id="rsvpContribution" rows="4" required></textarea>
-</div>
-
-<button class="rsvp-submit" id="rsvpSubmit" type="submit">
-  Become a Member
-</button>
-
-<p class="form-error" id="rsvpError"></p>
+          <label for="rsvpName">Full name</label>
+          <input id="rsvpName" name="name" type="text" autocomplete="name" placeholder="Your name" required>
+        </div>
+        <div class="field">
+          <label for="rsvpEmail">Email</label>
+          <input id="rsvpEmail" name="email" type="email" autocomplete="email" placeholder="you@email.com" required>
+        </div>
+        <div class="field">
+          <label for="rsvpPhone">WhatsApp number</label>
+          <input id="rsvpPhone" name="phone" type="tel" autocomplete="tel" placeholder="Optional">
+        </div>
+        <div class="field">
+          <label for="rsvpRole">I am joining as</label>
+          <select id="rsvpRole" name="attending_as">
+            <option value="A future Leo">A future Leo</option>
+            <option value="A current member">A current member</option>
+            <option value="A friend or guest">A friend or guest</option>
+          </select>
+        </div>
+        <label class="check"><input type="checkbox" name="join_interest" value="yes"><span>I would also like to learn about becoming a member of the club.</span></label>
+        <button class="rsvp-submit" id="rsvpSubmit" type="submit">Become a Member</button>
+        <p class="form-error" id="rsvpError" role="alert"></p>
+        <p class="form-note">We will only use your details to invite you to the reveal.</p>
+      </form>
 
       <div class="rsvp-done" id="rsvpDone" aria-live="polite">
         <div class="seal-stamp"><svg viewBox="0 0 24 24" fill="none" stroke="#23391f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6"/></svg></div>
@@ -1062,11 +989,11 @@ if(reduce){
   const TEAM=[
    
     {role:'President', name:'Leo Drishti Sinha', photo:'team/president.webp', mono:'P'},
-    {role:'Vice President', name:'Leo Abhishek Ajit', photo:'team/vice-president.webp', mono:'V'},
-    {role:'Secretary',      name:'Leo Khushboo Patel', photo:'team/secretary.webp',mono:'S'},
-    {role:'Treasurer',      name:'Leo Khushi Sonawane', photo:'team/treasurer.webp', mono:'T'},
-    {role:'Marketing Director',   name:'Leo Dhruti Ajmera', photo:'team/marketing.webp', mono:'M'},
-    {role:'Advisor',   name:'MJF Lion Dhirendra Sinha', photo:'team/advisor.webp', mono:'A'},
+    {role:'Vice President', name:'Leo Abhishek Ajit', mono:'V'},
+    {role:'Secretary',      name:'Leo Khushboo Patel', mono:'S'},
+    {role:'Treasurer',      name:'Leo Khushi Sonawane', photo:'team/Treasurer.webp', mono:'T'},
+    {role:'Marketing Director',   name:'Leo Dhruti Ajmera', mono:'M'},
+    {role:'Advisor',   name:'MJF Lion Dhirendra Sinha', mono:'A'},
   ];
   const SLOTS=[
     {l:2,  t:6,  r:-7},
@@ -1168,198 +1095,80 @@ if(reduce){
   camera.addEventListener('click',snap);
 })();
 
-// /* ---- RSVP: emblem reveal + form submit ---- */
-// (function(){
-//   const form=document.getElementById('rsvpForm'); if(!form) return;
-//   if(!reduce){
-//     gsap.from('.reveal-teaser,.teaser-cap,.rsvp-title,.rsvp-body,.form-wrap',
-//       {opacity:0,y:40,duration:.9,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'#rsvp',start:'top 62%'}});
-//   }
-
-//   /* ---------------------------------------------------------------
-//      RSVP BACKEND.  Default is Web3Forms (free, works on a static
-//      Cloudflare Pages site, no server of your own).
-//        1. Grab a free access key at https://web3forms.com
-//        2. Paste it into WEB3FORMS_KEY below.
-//      Until a key is set the form runs in preview mode and just shows
-//      the sealed confirmation, so you can test the flow.
-//      Prefer Formspree? Point ENDPOINT at your Formspree URL and drop
-//      the access_key field from the body.
-//      --------------------------------------------------------------- */
-//   const WEB3FORMS_KEY='YOUR-ACCESS-KEY-HERE';
-//   const ENDPOINT='https://api.web3forms.com/submit';
-
-//   const err=document.getElementById('rsvpError');
-//   const btn=document.getElementById('rsvpSubmit');
-//   const done=document.getElementById('rsvpDone');
-//   const nameEl=document.getElementById('rsvpName');
-//   const emailEl=document.getElementById('rsvpEmail');
-//   const phoneEl=document.getElementById('rsvpPhone');
-//   const roleEl=document.getElementById('rsvpRole');
-//   const joinEl=form.querySelector('input[name="join_interest"]');
-
-//   function showDone(){
-//     done.classList.add('on');
-//     if(reduce) return;
-//     gsap.fromTo('#rsvpDone .seal-stamp',{scale:0,rotation:-30},{scale:1,rotation:0,duration:.7,ease:'back.out(1.7)'});
-//     gsap.fromTo('#rsvpDone .done-title,#rsvpDone .done-sub',{opacity:0,y:14},{opacity:1,y:0,duration:.6,stagger:.12,delay:.18});
-//   }
-
-//   form.addEventListener('submit',async(e)=>{
-//     e.preventDefault();
-//     err.textContent='';
-//     const name=nameEl.value.trim(), email=emailEl.value.trim();
-//     if(!name){err.textContent='Please tell us your name.';nameEl.focus();return;}
-//     if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){err.textContent='Please enter a valid email so we can reach you.';emailEl.focus();return;}
-
-//     btn.disabled=true; const label=btn.textContent; btn.textContent='Joining...';
-//     const data={
-//       name, email,
-//       phone:phoneEl.value.trim(),
-//       attending_as:roleEl.value,
-//       join_interest:joinEl.checked?'yes':'no',
-//       subject:'New RSVP for the Leo Club of Aurelian reveal',
-//       from_name:'LCOA Reveal RSVP'
-//     };
-//     const preview = WEB3FORMS_KEY==='YOUR-ACCESS-KEY-HERE';
-//     try{
-//       if(preview){
-//         await new Promise(r=>setTimeout(r,650));
-//       }else{
-//         const res=await fetch(ENDPOINT,{
-//           method:'POST',
-//           headers:{'Content-Type':'application/json',Accept:'application/json'},
-//           body:JSON.stringify({access_key:WEB3FORMS_KEY,...data})
-//         });
-//         const out=await res.json();
-//         if(!out.success) throw new Error(out.message||'submit failed');
-//       }
-//       showDone();
-//     }catch(ex){
-//       btn.disabled=false; btn.textContent=label;
-//       err.textContent='Something went wrong sending that. Please try again, or message us on Instagram.';
-//     }
-//   });
-// })();
-
-/* ---- RSVP: emblem reveal + Google Form submit ---- */
+/* ---- RSVP: emblem reveal + form submit ---- */
 (function(){
-  const form = document.getElementById('rsvpForm');
-  if(!form) return;
-
+  const form=document.getElementById('rsvpForm'); if(!form) return;
   if(!reduce){
-    gsap.from(
-      '.reveal-teaser,.teaser-cap,.rsvp-title,.rsvp-body,.form-wrap',
-      {
-        opacity:0,
-        y:40,
-        duration:.9,
-        stagger:.1,
-        ease:'power3.out',
-        scrollTrigger:{
-          trigger:'#rsvp',
-          start:'top 62%'
-        }
-      }
-    );
+    gsap.from('.reveal-teaser,.teaser-cap,.rsvp-title,.rsvp-body,.form-wrap',
+      {opacity:0,y:40,duration:.9,stagger:.1,ease:'power3.out',scrollTrigger:{trigger:'#rsvp',start:'top 62%'}});
   }
 
-  const GOOGLE_FORM_URL =
-    'https://docs.google.com/forms/d/e/1FAIpQLSd1FmaofsWX9KmMsJIuwlCXcnO2Om0-oGRGXXNJh4vHcnBcdw/formResponse';
+  /* ---------------------------------------------------------------
+     RSVP BACKEND.  Default is Web3Forms (free, works on a static
+     Cloudflare Pages site, no server of your own).
+       1. Grab a free access key at https://web3forms.com
+       2. Paste it into WEB3FORMS_KEY below.
+     Until a key is set the form runs in preview mode and just shows
+     the sealed confirmation, so you can test the flow.
+     Prefer Formspree? Point ENDPOINT at your Formspree URL and drop
+     the access_key field from the body.
+     --------------------------------------------------------------- */
+  const WEB3FORMS_KEY='YOUR-ACCESS-KEY-HERE';
+  const ENDPOINT='https://api.web3forms.com/submit';
 
-  const err = document.getElementById('rsvpError');
-  const btn = document.getElementById('rsvpSubmit');
-  const done = document.getElementById('rsvpDone');
+  const err=document.getElementById('rsvpError');
+  const btn=document.getElementById('rsvpSubmit');
+  const done=document.getElementById('rsvpDone');
+  const nameEl=document.getElementById('rsvpName');
+  const emailEl=document.getElementById('rsvpEmail');
+  const phoneEl=document.getElementById('rsvpPhone');
+  const roleEl=document.getElementById('rsvpRole');
+  const joinEl=form.querySelector('input[name="join_interest"]');
 
   function showDone(){
     done.classList.add('on');
-
     if(reduce) return;
-
-    gsap.fromTo(
-      '#rsvpDone .seal-stamp',
-      {scale:0,rotation:-30},
-      {scale:1,rotation:0,duration:.7,ease:'back.out(1.7)'}
-    );
-
-    gsap.fromTo(
-      '#rsvpDone .done-title,#rsvpDone .done-sub',
-      {opacity:0,y:14},
-      {
-        opacity:1,
-        y:0,
-        duration:.6,
-        stagger:.12,
-        delay:.18
-      }
-    );
+    gsap.fromTo('#rsvpDone .seal-stamp',{scale:0,rotation:-30},{scale:1,rotation:0,duration:.7,ease:'back.out(1.7)'});
+    gsap.fromTo('#rsvpDone .done-title,#rsvpDone .done-sub',{opacity:0,y:14},{opacity:1,y:0,duration:.6,stagger:.12,delay:.18});
   }
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit',async(e)=>{
     e.preventDefault();
+    err.textContent='';
+    const name=nameEl.value.trim(), email=emailEl.value.trim();
+    if(!name){err.textContent='Please tell us your name.';nameEl.focus();return;}
+    if(!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){err.textContent='Please enter a valid email so we can reach you.';emailEl.focus();return;}
 
-    err.textContent = '';
-
-    const name = document.getElementById('rsvpName').value.trim();
-    const dob = document.getElementById('rsvpDob').value;
-    const age = document.getElementById('rsvpAge').value;
-    const email = document.getElementById('rsvpEmail').value.trim();
-    const phone = document.getElementById('rsvpPhone').value.trim();
-    const address = document.getElementById('rsvpAddress').value.trim();
-    const occupation = document.getElementById('rsvpOccupation').value.trim();
-    const education = document.getElementById('rsvpEducation').value.trim();
-    const reason = document.getElementById('rsvpReason').value.trim();
-    const contribution = document.getElementById('rsvpContribution').value.trim();
-
-    if(!name){
-      err.textContent = 'Please enter your full name.';
-      return;
-    }
-
-    if(!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)){
-      err.textContent = 'Please enter a valid email address.';
-      return;
-    }
-
-    btn.disabled = true;
-    const originalText = btn.textContent;
-    btn.textContent = 'Submitting...';
-
+    btn.disabled=true; const label=btn.textContent; btn.textContent='Joining...';
+    const data={
+      name, email,
+      phone:phoneEl.value.trim(),
+      attending_as:roleEl.value,
+      join_interest:joinEl.checked?'yes':'no',
+      subject:'New RSVP for the Leo Club of Aurelian reveal',
+      from_name:'LCOA Reveal RSVP'
+    };
+    const preview = WEB3FORMS_KEY==='YOUR-ACCESS-KEY-HERE';
     try{
-      const formData = new FormData();
-
-      formData.append('entry.979420047', name);
-      formData.append('entry.1017006251', dob);
-      formData.append('entry.462759704', age);
-      formData.append('entry.936971674', email);
-      formData.append('entry.1411939239', phone);
-      formData.append('entry.351851020', address);
-      formData.append('entry.991692828', occupation);
-      formData.append('entry.265172473', education);
-      formData.append('entry.1594607050', reason);
-      formData.append('entry.1531783803', contribution);
-
-      await fetch(GOOGLE_FORM_URL,{
-        method:'POST',
-        mode:'no-cors',
-        body:formData
-      });
-
-      form.reset();
+      if(preview){
+        await new Promise(r=>setTimeout(r,650));
+      }else{
+        const res=await fetch(ENDPOINT,{
+          method:'POST',
+          headers:{'Content-Type':'application/json',Accept:'application/json'},
+          body:JSON.stringify({access_key:WEB3FORMS_KEY,...data})
+        });
+        const out=await res.json();
+        if(!out.success) throw new Error(out.message||'submit failed');
+      }
       showDone();
-
     }catch(ex){
-      console.error(ex);
-
-      btn.disabled = false;
-      btn.textContent = originalText;
-
-      err.textContent =
-        'Something went wrong. Please try again.';
+      btn.disabled=false; btn.textContent=label;
+      err.textContent='Something went wrong sending that. Please try again, or message us on Instagram.';
     }
   });
 })();
-   
+
 /* ---- floating reserve CTA + footer dragonfly accent ---- */
 (function(){
   const footDfly=document.getElementById('footDfly');
