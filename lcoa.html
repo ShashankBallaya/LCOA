@@ -25,7 +25,11 @@
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Jost',sans-serif;background:var(--green-deep);color:var(--ivory);overflow-x:hidden;position:relative}
-
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+.lenis.lenis-smooth iframe{pointer-events:none}
 /* ============ HERO ============ */
 .hero{position:relative;min-height:100svh;display:flex;align-items:center;justify-content:center;overflow:hidden;perspective:1400px;padding:2rem 1rem}
 .bg-layer{position:absolute;inset:-6%;pointer-events:none}
@@ -627,6 +631,8 @@ html.cur-on input,html.cur-on textarea{cursor:text!important}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1/dist/lenis.min.js"></script>   
 <script>
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
 const R=(a,b)=>a+Math.random()*(b-a);
@@ -678,6 +684,22 @@ for(let i=0;i<N;i++){
 }
 
 gsap.registerPlugin(ScrollToPlugin,ScrollTrigger);
+/* ---- Lenis smooth scroll, synced with ScrollTrigger ---- */
+let lenis=null;
+if(!reduce && window.Lenis){
+  lenis=new Lenis({lerp:.09,smoothWheel:true});
+  lenis.on('scroll',ScrollTrigger.update);
+  gsap.ticker.add(t=>lenis.raf(t*1000));
+  gsap.ticker.lagSmoothing(0);
+}
+function smoothTo(target){
+  const el=typeof target==='string'?document.querySelector(target):target;
+  if(!el) return;
+  const navH=(document.getElementById('nav')?.offsetHeight||0)+6;
+  if(reduce){ window.scrollTo(0, el.getBoundingClientRect().top+window.scrollY-navH); return; }
+  if(lenis) lenis.scrollTo(el,{offset:-navH,duration:1.2});
+  else gsap.to(window,{duration:1.2,scrollTo:{y:el,offsetY:navH,autoKill:false},ease:'power3.inOut'});
+}
 
 function splitWords(el){const t=el.textContent.split(/(\s+)/);el.textContent='';t.forEach(tok=>{if(tok.trim()===''){el.appendChild(document.createTextNode(tok));}else{const s=document.createElement('span');s.className='w';s.textContent=tok;el.appendChild(s);}});return el.querySelectorAll('.w');}
 const cardWords=splitWords(document.getElementById('ltMsg'));
@@ -940,7 +962,7 @@ if(reduce){
     {role:'President', name:'Leo Drishti Sinha', photo:'team/president.webp', mono:'P'},
     {role:'Vice President', name:'Leo Abhishek Ajit', mono:'V'},
     {role:'Secretary',      name:'Leo Khushboo Patel', mono:'S'},
-    {role:'Treasurer',      name:'Leo Khushi Sonawane', mono:'T'},
+    {role:'Treasurer',      name:'Leo Khushi Sonawane', photo:'team/Treasurer.webp', mono:'T'},
     {role:'Marketing Director',   name:'Leo Dhruti Ajmera', mono:'M'},
     {role:'Advisor',   name:'MJF Lion Dhirendra Sinha', mono:'A'},
   ];
@@ -1131,7 +1153,7 @@ if(reduce){
   const heroEl=document.getElementById('hero');
   const rsvpEl=document.getElementById('rsvp');
   if(!fab||!heroEl||!rsvpEl) return;
-  fab.addEventListener('click',()=>gsap.to(window,{duration:1.4,scrollTo:{y:'#rsvp',autoKill:false},ease:'power3.inOut'}));
+  fab.addEventListener('click',()=>smoothTo('#rsvp'));
   let pastHero=false, atRsvp=false;
   const upd=()=>fab.classList.toggle('show', pastHero && !atRsvp);
   new IntersectionObserver(es=>{pastHero=!es[0].isIntersecting;upd();},{threshold:0.35}).observe(heroEl);
@@ -1151,10 +1173,7 @@ if(reduce){
     burger.setAttribute('aria-expanded',String(open));burger.setAttribute('aria-label',open?'Close menu':'Open menu');});
   nav.querySelectorAll('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{const id=a.getAttribute('href');const t=document.querySelector(id);if(!t)return;
-      e.preventDefault();closeMenu();
-      const navH=nav.offsetHeight;
-      if(reduce){t.scrollIntoView();window.scrollBy(0,-navH);}
-      else gsap.to(window,{duration:1.2,scrollTo:{y:id,offsetY:navH+6,autoKill:true},ease:'power3.inOut'});});
+    e.preventDefault();closeMenu();smoothTo(id);});
   });
   document.addEventListener('click',e=>{if(links.classList.contains('open') && !nav.contains(e.target)) closeMenu();});
 })();
@@ -1209,7 +1228,7 @@ function openEnvelope(){
 const envelope=document.getElementById('envelope');
 envelope.addEventListener('click',openEnvelope);
 envelope.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openEnvelope();}});
-document.getElementById('scrollCue').addEventListener('click',()=>gsap.to(window,{duration:1.5,scrollTo:{y:'#invitation',autoKill:false},ease:'power3.inOut'}));
+document.getElementById('scrollCue').addEventListener('click',()=>smoothTo('#invitation'));
 
 /* ---- silver sparkle cursor ---- */
 (function(){
