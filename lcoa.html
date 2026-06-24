@@ -414,9 +414,17 @@ html.cur-on input,html.cur-on textarea{cursor:text!important}
   .nav-burger.open span:nth-child(2){opacity:0}
   .nav-burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 }
+   /* ---- film grain (delete this block + the .grain div to disable) ---- */
+.grain{position:fixed;inset:-100%;z-index:99990;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size:220px 220px;opacity:.42;mix-blend-mode:overlay;
+  animation:grainShift .5s steps(3) infinite;will-change:transform}
+@keyframes grainShift{0%,100%{transform:translate(0,0)}10%{transform:translate(-4%,-5%)}20%{transform:translate(-9%,4%)}30%{transform:translate(5%,-9%)}40%{transform:translate(-4%,12%)}50%{transform:translate(-9%,5%)}60%{transform:translate(11%,0)}70%{transform:translate(2%,9%)}80%{transform:translate(-11%,1%)}90%{transform:translate(8%,4%)}}
+@media (prefers-reduced-motion:reduce){.grain{animation:none}}
 </style>
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
 <div class="preloader" id="preloader">
   <div class="pre-inner">
     <h1 class="pre-title">LCOA</h1>
@@ -768,15 +776,18 @@ if(reduce){
     ];
     const made=[];
     scatter.forEach((s,i)=>{
+      const asp=BOND_EL[s.k].a;
+      const wrap=document.createElement('div');
+      wrap.style.cssText=`position:absolute;left:${s.x}%;top:${s.y}%;width:${s.w}vw;height:${(s.w/asp).toFixed(2)}vw;z-index:${Math.round(s.d*4)};will-change:transform`;
       const el=document.createElement('div');
       el.className='petal';
-      const asp=BOND_EL[s.k].a;
-      el.style.cssText=`width:${s.w}vw;height:${(s.w/asp).toFixed(2)}vw;left:${s.x}%;top:${s.y}%;`+
+      el.style.cssText=`inset:0;width:100%;height:100%;`+
         `background-image:url(${BOND_EL[s.k].src});opacity:${(.55+s.d*.4).toFixed(2)};`+
         `filter:drop-shadow(0 10px 20px rgba(0,0,0,.34)) blur(${(1.1*(1-s.d)).toFixed(1)}px);`+
-        `transform:rotate(${s.r}deg);z-index:${Math.round(s.d*4)}`;
-      layer.appendChild(el);
-      made.push({el,...s});
+        `transform:rotate(${s.r}deg)`;
+      wrap.appendChild(el);
+      layer.appendChild(wrap);
+      made.push({el,wrap,...s});
     });
 
     if(!reduce){
@@ -793,7 +804,7 @@ if(reduce){
         gsap.to(stage,{rotateY:x*7,rotateX:-y*6,duration:1.2,transformPerspective:1400,overwrite:'auto'});
       });
       // scroll parallax drift
-      made.forEach(m=>{gsap.fromTo(m.el,{yPercent:-8*m.d-4},{yPercent:8*m.d+4,ease:'none',scrollTrigger:{trigger:'#bonds',start:'top bottom',end:'bottom top',scrub:true}});});
+      made.forEach(m=>{gsap.fromTo(m.wrap,{yPercent:-8*m.d-4},{yPercent:8*m.d+4,ease:'none',scrollTrigger:{trigger:'#bonds',start:'top bottom',end:'bottom top',scrub:1}});});
       // section reveal: botanicals fade/scale in, stage rises
       gsap.from(made.map(m=>m.el),{opacity:0,scale:.6,duration:1,stagger:.05,ease:'power2.out',scrollTrigger:{trigger:'#bonds',start:'top 68%'}});
       gsap.from('#bondsStage',{opacity:0,y:60,duration:1.1,ease:'power3.out',scrollTrigger:{trigger:'#bonds',start:'top 64%'}});
