@@ -421,10 +421,28 @@ html.cur-on input,html.cur-on textarea{cursor:text!important}
   animation:grainShift .5s steps(3) infinite;will-change:transform}
 @keyframes grainShift{0%,100%{transform:translate(0,0)}10%{transform:translate(-4%,-5%)}20%{transform:translate(-9%,4%)}30%{transform:translate(5%,-9%)}40%{transform:translate(-4%,12%)}50%{transform:translate(-9%,5%)}60%{transform:translate(11%,0)}70%{transform:translate(2%,9%)}80%{transform:translate(-11%,1%)}90%{transform:translate(8%,4%)}}
 @media (prefers-reduced-motion:reduce){.grain{animation:none}}
+/* cinematic preloader */
+.preloader{will-change:transform}
+.pre-title,.pre-bar,.pre-num{opacity:0}
+/* ambient music toggle */
+.sound-toggle{position:fixed;left:clamp(1rem,3vw,1.6rem);bottom:clamp(1rem,3vw,1.6rem);z-index:9200;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;cursor:pointer;background:linear-gradient(180deg,rgba(27,45,32,.55),rgba(22,37,26,.4));-webkit-backdrop-filter:blur(14px) saturate(160%);backdrop-filter:blur(14px) saturate(160%);border:1px solid rgba(228,201,138,.35);box-shadow:inset 0 1px 0 rgba(255,255,255,.3),0 6px 18px rgba(0,0,0,.3);transition:transform .25s,border-color .25s}
+.sound-toggle:hover{transform:translateY(-2px);border-color:rgba(228,201,138,.65)}
+.sound-toggle:focus-visible{outline:2px solid var(--gold-light);outline-offset:3px}
+.snd-bars{display:flex;align-items:center;gap:2.5px;height:16px}
+.snd-bars i{display:block;width:2.5px;height:4px;background:var(--gold-light);border-radius:2px}
+.sound-toggle.on .snd-bars i{animation:eq .9s ease-in-out infinite}
+.sound-toggle.on .snd-bars i:nth-child(2){animation-duration:.66s}
+.sound-toggle.on .snd-bars i:nth-child(3){animation-duration:1.1s}
+.sound-toggle.on .snd-bars i:nth-child(4){animation-duration:.8s}
+.sound-toggle:not(.on) .snd-bars i{height:3px;opacity:.5}
+@keyframes eq{0%,100%{height:4px}50%{height:15px}}
+@media (prefers-reduced-motion:reduce){.sound-toggle.on .snd-bars i{animation:none;height:9px}}
 </style>
 </head>
 <body>
 <div class="grain" aria-hidden="true"></div>
+<audio id="bgm" src="audio/zen.mp3" loop preload="auto"></audio>
+<button class="sound-toggle" id="soundToggle" type="button" aria-label="Toggle ambient music" aria-pressed="false"><span class="snd-bars"><i></i><i></i><i></i><i></i></span></button>
 <div class="preloader" id="preloader">
   <div class="pre-inner">
     <h1 class="pre-title">LCOA</h1>
@@ -1258,21 +1276,46 @@ document.getElementById('scrollCue').addEventListener('click',()=>smoothTo('#inv
   addEventListener('scroll',()=>{const g=scrollY>innerHeight*0.10;if(g!==glass){glass=g;cur.classList.toggle('glass',g);}},{passive:true});
 })();
 
-/* ---- loading screen (lets the scene warm up, then reveals) ---- */
+/* ---- cinematic loading screen ---- */
 (function(){
   const pre=document.getElementById('preloader'),fill=document.getElementById('preFill'),num=document.getElementById('preNum');
+  const title=pre&&pre.querySelector('.pre-title'), bar=pre&&pre.querySelector('.pre-bar');
   if(reduce){ if(pre)pre.style.display='none'; startHero(); return; }
+  gsap.set(title,{letterSpacing:'0.55em',y:16,filter:'blur(7px)'});
+  gsap.timeline()
+    .to(title,{opacity:1,letterSpacing:'0.02em',y:0,filter:'blur(0px)',duration:1.1,ease:'power3.out'},0)
+    .to([bar,num],{opacity:1,duration:.8,ease:'power2.out'},.45);
   const prog={v:0}, start=performance.now(); let loaded=false, fired=false;
   addEventListener('load',()=>loaded=true);
   const upd=()=>{num.textContent=Math.round(prog.v)+'%';fill.style.width=prog.v+'%';};
   gsap.to(prog,{v:90,duration:2.6,ease:'power1.out',onUpdate:upd});
   function done(){
-    gsap.to(prog,{v:100,duration:.6,ease:'power2.out',onUpdate:upd,onComplete:()=>{
-      gsap.to(pre,{opacity:0,duration:.8,ease:'power2.inOut',onComplete:()=>{pre.style.display='none';}});
-      startHero();
-    }});
+    gsap.timeline()
+      .to(prog,{v:100,duration:.5,ease:'power2.out',onUpdate:upd},0)
+      .to(fill,{boxShadow:'0 0 22px rgba(230,164,174,.95)',duration:.5},0)
+      .to(title,{y:-20,letterSpacing:'0.34em',opacity:0,filter:'blur(4px)',duration:.7,ease:'power3.in'},.55)
+      .to([bar,num],{opacity:0,y:-10,duration:.5,ease:'power2.in'},.55)
+      .add(startHero,1.0)
+      .to(pre,{yPercent:-100,duration:1.15,ease:'power4.inOut'},1.05)
+      .set(pre,{display:'none'});
   }
   (function check(){const el=performance.now()-start; if(!fired&&((loaded&&el>2400)||el>20000)){fired=true;done();return;} requestAnimationFrame(check);})();
+})();
+   
+/* ---- ambient music toggle ---- */
+(function(){
+  const audio=document.getElementById('bgm'), btn=document.getElementById('soundToggle');
+  if(!audio||!btn) return;
+  const PREF='lcoa-sound'; let on=false;
+  let wants=(()=>{try{return localStorage.getItem(PREF)!=='off';}catch(e){return true;}})();
+  audio.volume=0;
+  function setPref(v){try{localStorage.setItem(PREF,v?'on':'off');}catch(e){}}
+  function fade(to,dur){gsap.to(audio,{volume:to,duration:dur,ease:'sine.inOut',onComplete:()=>{if(to===0)audio.pause();}});}
+  function play(){const p=audio.play();on=true;btn.classList.add('on');btn.setAttribute('aria-pressed','true');fade(.5,1.4);if(p&&p.catch)p.catch(()=>{on=false;btn.classList.remove('on');btn.setAttribute('aria-pressed','false');});}
+  function stop(){on=false;btn.classList.remove('on');btn.setAttribute('aria-pressed','false');fade(0,.6);}
+  function arm(e){if(e&&e.target&&e.target.closest&&e.target.closest('#soundToggle'))return;if(wants&&!on)play();document.removeEventListener('pointerdown',arm,true);}
+  document.addEventListener('pointerdown',arm,true);
+  btn.addEventListener('click',()=>{document.removeEventListener('pointerdown',arm,true);if(on){stop();wants=false;setPref(false);}else{wants=true;setPref(true);play();}});
 })();
 </script>
 </body>
