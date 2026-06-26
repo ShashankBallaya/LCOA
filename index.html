@@ -1085,6 +1085,32 @@ if(reduce){
   }
 
   let i=0, busy=false;
+  
+  /* ---- synthesized camera shutter (no audio file needed) ---- */
+  function playShutter(){
+    try{ if(localStorage.getItem('lcoa-sound')==='off') return; }catch(e){}
+    try{
+      const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+      const ctx=playShutter._ctx||(playShutter._ctx=new AC());
+      if(ctx.state==='suspended') ctx.resume();
+      const now=ctx.currentTime;
+      const clk=(t,dur,freq,q,peak)=>{
+        const len=Math.max(1,Math.floor(ctx.sampleRate*dur));
+        const buf=ctx.createBuffer(1,len,ctx.sampleRate);
+        const d=buf.getChannelData(0); for(let k=0;k<len;k++) d[k]=Math.random()*2-1;
+        const src=ctx.createBufferSource(); src.buffer=buf;
+        const bp=ctx.createBiquadFilter(); bp.type='bandpass'; bp.frequency.value=freq; bp.Q.value=q;
+        const g=ctx.createGain();
+        g.gain.setValueAtTime(0,t);
+        g.gain.linearRampToValueAtTime(peak,t+0.002);
+        g.gain.exponentialRampToValueAtTime(0.0008,t+dur);
+        src.connect(bp); bp.connect(g); g.connect(ctx.destination);
+        src.start(t); src.stop(t+dur);
+      };
+      clk(now,       0.035, 2200, 0.7, 0.5);   // mirror up
+      clk(now+0.085, 0.05,  3200, 0.9, 0.65);  // shutter close
+    }catch(e){}
+  }
   function snap(){
     if(busy) return;
     if(i>=TEAM.length){ reset(); return; }
@@ -1098,6 +1124,7 @@ if(reduce){
     const dev=p.querySelector('.dev'), photo=p.querySelector('.photo'), cap=p.querySelector('.cap');
     i++;
     if(i>=TEAM.length) hint.textContent='That is the whole circle';
+    playShutter();
     if(reduce){ gsap.set(p,{opacity:1,rotation:s.r}); gsap.set(dev,{opacity:0}); return; }
     busy=true;
     gsap.fromTo(camera,{rotation:0},{rotation:-3,duration:.06,yoyo:true,repeat:3,ease:'power1.inOut'});
