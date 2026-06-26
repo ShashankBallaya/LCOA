@@ -1141,14 +1141,14 @@ if(reduce){
   // const WEB3FORMS_KEY='YOUR-ACCESS-KEY-HERE';
   // const ENDPOINT='https://api.web3forms.com/submit';
 
-  // const err=document.getElementById('rsvpError');
-  // const btn=document.getElementById('rsvpSubmit');
-  // const done=document.getElementById('rsvpDone');
-  // const nameEl=document.getElementById('rsvpName');
-  // const emailEl=document.getElementById('rsvpEmail');
-  // const phoneEl=document.getElementById('rsvpPhone');
-  // const roleEl=document.getElementById('rsvpRole');
-  // const joinEl=form.querySelector('input[name="join_interest"]');
+  const err=document.getElementById('rsvpError');
+  const btn=document.getElementById('rsvpSubmit');
+  const done=document.getElementById('rsvpDone');
+  const nameEl=document.getElementById('rsvpName');
+  const emailEl=document.getElementById('rsvpEmail');
+  const phoneEl=document.getElementById('rsvpPhone');
+  const roleEl=document.getElementById('rsvpRole');
+  const joinEl=form.querySelector('input[name="join_interest"]');
    /* ---- Google Form target ---- */
   const GFORM='https://docs.google.com/forms/d/e/1FAIpQLSds1ZCFZTSq__-3C_O9qXhkvHQMnNbf27NJpMSdCbgnxtydEQ/formResponse';
   const FIELD={
@@ -1264,6 +1264,7 @@ function startHero(){
 let opened=false;
 function openEnvelope(){
   if(opened)return;opened=true;
+  if(typeof startBgm==='function') startBgm();
   gsap.killTweensOf('#envelope');
   gsap.killTweensOf('.enter-cue');
   const tl=gsap.timeline({defaults:{ease:'power3.inOut'}});
@@ -1341,7 +1342,9 @@ document.getElementById('scrollCue').addEventListener('click',()=>smoothTo('#inv
   function fade(to,dur){gsap.to(audio,{volume:to,duration:dur,ease:'sine.inOut',onComplete:()=>{if(to===0)audio.pause();}});}
   function play(){const p=audio.play();on=true;btn.classList.add('on');btn.setAttribute('aria-pressed','true');fade(.5,1.4);if(p&&p.catch)p.catch(()=>{on=false;btn.classList.remove('on');btn.setAttribute('aria-pressed','false');});}
   function stop(){on=false;btn.classList.remove('on');btn.setAttribute('aria-pressed','false');fade(0,.6);}
-  function arm(e){if(e&&e.target&&e.target.closest&&e.target.closest('#soundToggle'))return;if(wants&&!on)play();document.removeEventListener('pointerdown',arm,true);}
+  function startBgm(){ if(!on){ wants=true; setPref(true); play(); } }
+  window.startBgm=startBgm;
+   function arm(e){if(e&&e.target&&e.target.closest&&e.target.closest('#soundToggle'))return;if(wants&&!on)play();document.removeEventListener('pointerdown',arm,true);}
   document.addEventListener('pointerdown',arm,true);
   btn.addEventListener('click',()=>{document.removeEventListener('pointerdown',arm,true);if(on){stop();wants=false;setPref(false);}else{wants=true;setPref(true);play();}});
 })();
