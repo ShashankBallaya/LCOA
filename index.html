@@ -759,7 +759,8 @@ for(let i=0;i<N;i++){
 gsap.registerPlugin(ScrollToPlugin,ScrollTrigger);
 /* ---- Lenis smooth scroll, synced with ScrollTrigger ---- */
 let lenis=null;
-if(!reduce && window.Lenis){
+const isTouch = matchMedia('(pointer:coarse)').matches || ('ontouchstart' in window) || navigator.maxTouchPoints>0;
+if(!reduce && window.Lenis && !isTouch){{
   lenis=new Lenis({lerp:.09,smoothWheel:true});
   lenis.on('scroll',ScrollTrigger.update);
   gsap.ticker.add(t=>lenis.raf(t*1000));
