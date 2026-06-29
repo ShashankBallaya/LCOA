@@ -482,7 +482,24 @@ html.cur-on input,html.cur-on textarea{cursor:text!important}
 .done-follow b{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.02rem;color:var(--gold-light)}
 .done-follow:hover{color:var(--ivory)}
 .done-follow:hover b{text-shadow:0 0 12px rgba(230,164,174,.4)}
-   
+
+   /* ---- interaction polish (Emil) ---- */
+:root{--ease-out:cubic-bezier(.23,1,.32,1)}
+.rsvp-submit{transition:transform .16s var(--ease-out),box-shadow .2s var(--ease-out)}
+.nav-cta{transition:transform .16s var(--ease-out),box-shadow .2s var(--ease-out),filter .2s var(--ease-out)}
+.ig-banner{transition:transform .16s var(--ease-out),border-color .25s var(--ease-out),box-shadow .25s var(--ease-out)}
+.sound-toggle{transition:transform .16s var(--ease-out),border-color .25s var(--ease-out)}
+.rsvp-fab{transition:transform .18s var(--ease-out),opacity .4s var(--ease-out),background .25s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){
+  .rsvp-submit:hover{transform:translateY(-2px);box-shadow:0 16px 32px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.6)}
+  .nav-cta:hover{transform:translateY(-1px);filter:brightness(1.04)}
+}
+/* press feedback AFTER hover so the press wins when both are active */
+.rsvp-submit:active,.nav-cta:active,.ig-banner:active{transform:scale(.97)}
+.sound-toggle:active,.rsvp-fab.show:active{transform:scale(.94)}
+@media (hover:none),(pointer:coarse){
+  .ig-banner:hover,.sound-toggle:hover,.rsvp-fab:hover{transform:none}
+}
 </style>
 </head>
 <body>
