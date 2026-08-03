@@ -351,7 +351,7 @@ const WING_ROOTS = [        // fore/hind pair per side
   { name:'wing.l.004_046', side:-1, pair:1 },
 ];
 const normName = n => n.toLowerCase().replace(/[^a-z0-9]/g, '');
-const BODY_LENGTH = 2.6;    // target world size, matches the placeholder
+const BODY_LENGTH = 1.5;    // target world size (nose to tail), in scene units
 
 if (!new URLSearchParams(location.search).has('placeholder')){
   new GLTFLoader().load('models/dragonfly/scene.gltf', gltf => {
@@ -365,8 +365,14 @@ if (!new URLSearchParams(location.search).has('placeholder')){
     const axes = [size.x, size.y, size.z];
     const longest = axes.indexOf(Math.max(...axes));       // body's length axis
 
-    model.scale.setScalar(BODY_LENGTH / axes[longest]);
-    model.position.copy(ctr).multiplyScalar(-BODY_LENGTH / axes[longest]);
+    /* one place sets both scale and the recentre offset, so they can never
+       drift apart when the size is retuned */
+    const sizeTo = len => {
+      const k = len / axes[longest];
+      model.scale.setScalar(k);
+      model.position.copy(ctr).multiplyScalar(-k);
+    };
+    sizeTo(BODY_LENGTH);
 
     const rig = new THREE.Group();                          // aligns model -> +Z travel axis
     rig.add(model);
@@ -404,7 +410,9 @@ if (!new URLSearchParams(location.search).has('placeholder')){
       rig.visible = false;
       console.warn(`[dfly] matched ${bones.length}/${WING_ROOTS.length} wing bones, keeping placeholder`);
     }
-    window.__dfly && (window.__dfly.model = model, window.__dfly.bones = bones);
+    // live tuning handle: __dfly.setSize(1.2) in the console, then tell me the number
+    window.__dfly && (window.__dfly.model = model, window.__dfly.bones = bones,
+                      window.__dfly.setSize = sizeTo);
   },
   undefined,
   err => console.warn('[dfly] model failed to load, keeping placeholder', err));
