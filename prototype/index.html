@@ -6,7 +6,18 @@
 <title>LCOA — Dragonfly scroll guide (prototype)</title>
 <meta name="robots" content="noindex">
 
+<!-- Type system lifted from the live site so the prototype reads as LCOA -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap" rel="stylesheet">
+
 <style>
+@font-face{
+  font-family:'Birds of Paradise';
+  font-style:normal;font-weight:400;font-display:swap;
+  src:local('Birds of Paradise  Personal use'),
+      url('https://fonts.cdnfonts.com/s/15021/Birds%20of%20Paradise%20%C2%A9%20PERSONAL%20USE%20ONLY.woff') format('woff');
+}
 /* ============================================================
    MOOD SYSTEM
    Three mood categories -> one bg + one accent each.
@@ -23,6 +34,12 @@
   --accent:#d8a24a;
   --ink:#eef1ea;
   --ink-dim:#eef1ea99;
+
+  /* same roles as the live site: display / sans / serif / script */
+  --f-display:'Birds of Paradise','Birds of Paradise  Personal use','Cormorant Garamond',serif;
+  --f-sans:'Jost',sans-serif;
+  --f-serif:'Cormorant Garamond',serif;
+  --f-script:'Pinyon Script',cursive;
 }
 
 *{box-sizing:border-box}
@@ -34,7 +51,7 @@ html.lenis,html.lenis body{height:auto}
 body{
   background:var(--bg);
   color:var(--ink);
-  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-family:var(--f-sans);
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
@@ -70,17 +87,18 @@ section{
   text-align:center;
 }
 .eyebrow{
-  font-size:.72rem; letter-spacing:.32em; text-transform:uppercase;
+  font-family:var(--f-sans); font-weight:500;
+  font-size:clamp(.6rem,1.4vw,.72rem); letter-spacing:.42em; text-transform:uppercase;
   color:var(--accent); margin:0 0 1.4rem;
 }
-h1{font-size:clamp(2.6rem,9vw,7rem); font-weight:300; letter-spacing:-.02em; margin:0; line-height:1.02}
-h2{font-size:clamp(1.8rem,5vw,3.6rem); font-weight:300; letter-spacing:-.01em; margin:0 0 1.2rem; line-height:1.15}
-p{color:var(--ink-dim); max-width:46ch; line-height:1.7; margin:0 auto}
+h1{font-family:var(--f-display); font-weight:400; font-size:clamp(2rem,7.6vw,5.4rem); letter-spacing:.01em; margin:0; line-height:1.0}
+h2{font-family:var(--f-display); font-weight:500; font-size:clamp(2rem,6vw,3.6rem); line-height:1.08; margin:0 0 1.2rem}
+p{font-family:var(--f-serif); font-size:clamp(1.05rem,2.2vw,1.35rem); color:var(--ink-dim); max-width:42ch; line-height:1.7; margin:0 auto}
 .logo-mark{
   width:120px;height:120px;border-radius:50%;
   border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);
   display:grid;place-items:center;margin:0 auto 2.2rem;
-  font-size:2rem;letter-spacing:.1em;color:var(--accent);
+  font-family:var(--f-display);font-size:2.2rem;letter-spacing:.06em;color:var(--accent);
 }
 
 /* ---- team: cards revealed by the dragonfly's x-position ---- */
@@ -94,8 +112,8 @@ p{color:var(--ink-dim); max-width:46ch; line-height:1.7; margin:0 auto}
 }
 .t-card.lit{opacity:1;transform:none}
 .t-card .av{width:56px;height:56px;border-radius:50%;margin:0 auto .8rem;background:color-mix(in srgb,var(--accent) 26%,transparent)}
-.t-card .nm{font-size:.9rem}
-.t-card .ro{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-top:.35rem}
+.t-card .nm{font-family:var(--f-script);font-size:1.35rem;line-height:1}
+.t-card .ro{font-family:var(--f-sans);font-weight:500;font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-top:.35rem}
 
 /* ---- gallery: cards at varying depth, faked with scale/blur/opacity ---- */
 .gal{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.2rem;margin-top:3rem;width:min(900px,100%)}
@@ -109,13 +127,13 @@ p{color:var(--ink-dim); max-width:46ch; line-height:1.7; margin:0 auto}
 .ev{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;margin-top:3rem}
 .e-card{width:210px;padding:1.6rem;border-radius:14px;text-align:left;border:1px solid color-mix(in srgb,var(--accent) 16%,transparent)}
 .e-card.featured{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 9%,transparent)}
-.e-card .dt{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
-.e-card .ti{margin-top:.6rem;font-size:1.05rem}
+.e-card .dt{font-family:var(--f-sans);font-weight:500;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.e-card .ti{font-family:var(--f-serif);font-weight:600;margin-top:.6rem;font-size:1.25rem}
 
 /* ---- form: dragonfly rests to the SIDE, never over the inputs ---- */
 #form .wrap{width:min(440px,100%);margin-right:auto;margin-left:0;text-align:left}
 @media(min-width:900px){ #form{align-items:flex-start;padding-left:12vw} }
-label{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:1.4rem 0 .5rem}
+label{display:block;font-family:var(--f-sans);font-weight:500;font-size:.62rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin:1.4rem 0 .5rem}
 input{
   width:100%;padding:.85rem 1rem;border-radius:9px;
   border:1px solid color-mix(in srgb,var(--accent) 22%,transparent);
@@ -401,6 +419,24 @@ if (!new URLSearchParams(location.search).has('placeholder')){
       });
     }
 
+    /* --- hide the legs ---
+       The legs are not a separate mesh: the whole insect is one skinned mesh,
+       so they can only be removed by collapsing the bones that drive them.
+       Scaling a leg ROOT to ~0 folds its vertices into the thorax and every
+       child bone inherits, so the 6 roots cover all 34 leg bones. Roots are
+       found structurally (a 'leg' bone whose parent is not one) rather than
+       by hard-coded names, so a re-export cannot silently bring them back.
+       Not exactly 0: a singular matrix can propagate NaN through skinning. */
+    let legRoots = 0;
+    model.traverse(o => {
+      const isLeg = n => /leg/i.test(n || '');
+      if (o.isBone && isLeg(o.name) && !isLeg(o.parent?.name)){
+        o.scale.setScalar(1e-4);
+        legRoots++;
+      }
+    });
+    if (!legRoots) console.warn('[dfly] no leg bones found — legs may still be visible');
+
     if (bones.length === WING_ROOTS.length){
       placeholder.visible = false;
       wings.length = 0;
@@ -512,6 +548,9 @@ const clock = new THREE.Clock();
 const pos = new THREE.Vector3(), tan = new THREE.Vector3(), look = new THREE.Vector3();
 const targetQ = new THREE.Quaternion(), mat4 = new THREE.Matrix4(), flapQ = new THREE.Quaternion();
 const up = new THREE.Vector3(0,1,0);
+const dirXY = new THREE.Vector3();
+const VIEW_UP = new THREE.Vector3(0,0,1);   // camera axis: keeps the back to the viewer
+let NOSE = 1;                                // flip to -1 if it flies tail-first (__dfly.flipNose())
 const teamCards = [...document.querySelectorAll('.t-card')];
 const hud = document.getElementById('hud');
 const bloom = document.getElementById('bloom');
@@ -548,12 +587,24 @@ function frame(){
   fly.scale.setScalar(0.35 + born * 0.65);
   bloom.style.opacity = (1 - smoothstep(0, 0.07, t)) * 0.9;
 
-  /* --- orient to direction of travel, smoothed via slerp --- */
-  look.copy(pos).add(tan);
-  mat4.lookAt(pos, look, up);
+  /* --- orient to direction of travel, held upright ---
+     The legs sit on the underside, so they only come into view when the
+     insect is seen edge-on. Keeping its back to the camera shows the wing
+     spread and hides the legs behind the body.
+     Two rules do that: steer using only the screen-plane component of the
+     tangent (no pitch out of plane), and use the view axis +Z as "up", so
+     the dorsal side always faces the camera. Depth still varies via
+     position.z, it just never tips the body.
+     No roll: banking would tip the underside into view. The idle wobble is
+     a yaw about the view axis instead, which stays flat to camera. */
+  dirXY.set(tan.x, tan.y, 0);
+  if (dirXY.lengthSq() < 1e-6) dirXY.set(1, 0, 0);            // degenerate tangent guard
+  dirXY.normalize().multiplyScalar(NOSE);
+  look.copy(pos).add(dirXY);
+  mat4.lookAt(pos, look, VIEW_UP);
   targetQ.setFromRotationMatrix(mat4);
   fly.quaternion.slerp(targetQ, 1 - Math.pow(0.0015, dt));   // frame-rate independent
-  fly.rotateZ(Math.sin(el * 0.9) * 0.12 * mood.bob);          // gentle bank
+  fly.rotateY(Math.sin(el * 0.9) * 0.10 * mood.bob);          // wobble in the view plane
 
   glow.position.copy(pos);
 
@@ -605,7 +656,12 @@ if (reduce){
 }
 
 /* prototype-only handle, for reviewing the flight without a mouse */
-window.__dfly = { get t(){ return state.t; }, lenis, fly, curve, WAYPOINTS, scene, camera };
+window.__dfly = {
+  get t(){ return state.t; },
+  lenis, fly, curve, WAYPOINTS, scene, camera, renderer,
+  flipNose(){ NOSE = -NOSE; return NOSE; },          // if it travels tail-first
+  roll(deg){ fly.rotateZ(THREE.MathUtils.degToRad(deg)); },   // one-off, to inspect other faces
+};
 </script>
 </body>
 </html>
