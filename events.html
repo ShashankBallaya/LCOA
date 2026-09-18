@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Events · Leo Club of Aurelian</title>
+<meta name="description" content="Every event Leo Club of Aurelian has run, month by month, plus the calendar of what is coming next: service drives, ceremonies and meetings.">
+<link rel="canonical" href="https://lcoaurelian.in/events.html">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Leo Club of Aurelian">
+<meta property="og:locale" content="en_IN">
+<meta property="og:title" content="Events · Leo Club of Aurelian">
+<meta property="og:description" content="Every event Leo Club of Aurelian has run, month by month, plus the calendar of what is coming next: service drives, ceremonies and meetings.">
+<meta property="og:url" content="https://lcoaurelian.in/events.html">
+<meta property="og:image" content="https://lcoaurelian.in/images/og.jpg">
+<meta property="og:image:secure_url" content="https://lcoaurelian.in/images/og.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The club crest over a sage green room at dusk, with the words Leo Club of Aurelian and Built on bonds.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Events · Leo Club of Aurelian">
+<meta name="twitter:description" content="Every event Leo Club of Aurelian has run, month by month, plus the calendar of what is coming next: service drives, ceremonies and meetings.">
+<meta name="twitter:image" content="https://lcoaurelian.in/images/og.jpg">
+<meta name="twitter:image:alt" content="The club crest over a sage green room at dusk, with the words Leo Club of Aurelian and Built on bonds.">
+<link rel="icon" href="images/icon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="images/icon-64.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://lcoaurelian.in/events.html",
+      "url": "https://lcoaurelian.in/events.html",
+      "name": "Events · Leo Club of Aurelian",
+      "inLanguage": "en-IN",
+      "isPartOf": { "@id": "https://lcoaurelian.in/#site" },
+      "about": { "@id": "https://lcoaurelian.in/#club" },
+      "primaryImageOfPage": "https://lcoaurelian.in/images/og.jpg"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://lcoaurelian.in/" },
+        { "@type": "ListItem", "position": 2, "name": "Events", "item": "https://lcoaurelian.in/events.html" }
+      ]
+    }
+  ]
+}
+</script>
+<meta name="theme-color" content="#FBF0E3">
+<link rel="icon" href="images/logo-96.webp">
+<!-- self-hosted fonts (SIL Open Font License, see fonts/OFL-*.txt): one variable file per style, preloaded -->
+<!-- site data, loaded before the body so the first paint already includes the rendered cards (no layout jump) -->
+<script src="data/club.js"></script>
+<script>
+/* Upcoming events as schema.org Event, built from data/club.js. Google needs a name, a
+   startDate and a location before an Event counts, so an entry without `place` is left
+   out: give it a place in data/club.js and it appears here. Crawlers that do not run
+   JavaScript see the CollectionPage below instead. */
+(function(){
+  var C=window.CLUB; if(!C||!C.upcoming) return;
+  var today=new Date(); today.setHours(0,0,0,0);
+  var items=C.upcoming.filter(function(e){ return e.date && e.place && new Date(e.date+'T00:00')>=today; });
+  if(!items.length) return;
+  var graph=items.map(function(e){
+    var ev={
+      "@type":"Event",
+      "name":e.title,
+      "startDate":e.date,
+      "eventAttendanceMode":"https://schema.org/OfflineEventAttendanceMode",
+      "location":{"@type":"Place","name":e.place,"address":{"@type":"PostalAddress","addressCountry":"IN"}},
+      "organizer":{"@id":"https://lcoaurelian.in/#club"},
+      "image":"https://lcoaurelian.in/images/og.jpg",
+      "url":"https://lcoaurelian.in/events.html"
+    };
+    if(e.focus||e.text) ev.description=e.focus||e.text;
+    return ev;
+  });
+  var tag=document.createElement('script');
+  tag.type='application/ld+json';
+  tag.textContent=JSON.stringify({"@context":"https://schema.org","@graph":graph});
+  document.head.appendChild(tag);
+})();
+</script>
+<link rel="preload" href="fonts/jost.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-garamond.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/cormorant-garamond-italic.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{font-family:'Cormorant Garamond';font-style:normal;font-weight:300 500;font-display:swap;src:url(fonts/cormorant-garamond.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Cormorant Garamond';font-style:italic;font-weight:300 500;font-display:swap;src:url(fonts/cormorant-garamond-italic.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Jost';font-style:normal;font-weight:300 500;font-display:swap;src:url(fonts/jost.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'Jost';font-style:normal;font-weight:300 500;font-display:swap;src:url(fonts/jost-latin-ext.woff2) format('woff2');unicode-range:U+20B9}
+/* metric-matched fallbacks: until the web fonts arrive, Georgia and Arial take up the same space, so nothing jumps when they swap */
+@font-face{font-family:'Cormorant Fallback';font-style:normal;src:local('Georgia');size-adjust:88.37%;ascent-override:104.11%;descent-override:32.82%;line-gap-override:0%}
+@font-face{font-family:'Cormorant Fallback';font-style:italic;src:local('Georgia Italic'),local('Georgia-Italic');size-adjust:79.1%;ascent-override:116.31%;descent-override:36.66%;line-gap-override:0%}
+@font-face{font-family:'Jost Fallback';font-style:normal;src:local('Arial'),local('ArialMT');size-adjust:92.21%;ascent-override:116.04%;descent-override:41.21%;line-gap-override:0%}
+</style>
+<style>
+/* Same tokens and components as index.html. Keep the two in step. */
+:root{
+  --paper:#FBF0E3;--paper-2:#F4E6D3;--sage:#AEC49D;--sage-soft:#DCE5D2;--sage-deep:#7F9673;
+  --ink:#1E3324;--ink-2:#4F5F4F;--gold:#967349;--gold-line:#DCC3A3;--gold-ink:#7E5F3A;
+  --blush:#E6A4AE;--blush-soft:#F6D9DD;--blush-line:#EBC3CA;--rose-ink:#8E4255;
+  --ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.77,0,.175,1);
+  --f-display:'Cormorant Garamond','Cormorant Fallback',Georgia,serif;--f-sans:'Jost','Jost Fallback',system-ui,sans-serif;
+  --wrap:1120px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scrollbar-color:var(--sage-deep) var(--paper-2);caret-color:var(--ink)}
+body{font-family:var(--f-sans);font-weight:300;font-size:1.0625rem;line-height:1.65;color:var(--ink-2);background:var(--paper);-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none;text-underline-offset:.18em}
+::selection{background:var(--blush-soft);color:var(--ink)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{width:min(var(--wrap),calc(100% - 3rem));margin-inline:auto}
+h1,h2,h3{font-family:var(--f-display);font-variant-numeric:lining-nums;font-weight:400;color:var(--ink);line-height:1.05;letter-spacing:-.01em;text-wrap:balance}
+h2 em,h1 em{font-style:italic;font-weight:300;color:var(--rose-ink)}
+p{max-width:58ch}
+
+.btn{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--f-sans);font-weight:500;font-size:.9rem;letter-spacing:.04em;padding:.85rem 1.5rem;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease,transform .16s var(--ease-out)}
+.btn:active{transform:scale(.97)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-blush{background:var(--blush);color:var(--ink)}
+.btn-line{border-color:var(--gold-line);color:var(--ink)}
+@media (hover:hover) and (pointer:fine){
+  .btn:hover{transform:translateY(-1px)}.btn:hover:active{transform:scale(.97)}
+  .btn-ink:hover{background:#2B4634}.btn-blush:hover{background:#EBB5BD}
+  .btn-line:hover{border-color:var(--gold);background:var(--paper-2)}
+}
+
+/* nav (as index.html) */
+.nav{position:sticky;top:0;z-index:20;background:rgba(251,240,227,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.nav.scrolled{border-bottom-color:var(--gold-line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:4.5rem}
+.brand{display:flex;align-items:center;gap:.75rem;color:var(--ink)}
+.brand img{width:2.4rem;height:auto}
+.brand span{font-family:var(--f-display);font-size:1.25rem;letter-spacing:.01em}
+.nav-links{display:flex;align-items:center;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.92rem;font-weight:400;color:var(--ink-2);position:relative;padding:.25rem 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .2s var(--ease-out)}
+.nav-links a[aria-current]{color:var(--ink)}
+.nav-links a[aria-current]::after{transform:scaleX(1);background:var(--rose-ink)}
+@media (hover:hover) and (pointer:fine){.nav-links a:hover::after{transform:scaleX(1)}}
+.nav-links .btn{padding:.6rem 1.15rem;font-size:.82rem;color:var(--ink)}
+.burger{display:none;background:none;border:0;width:2.5rem;height:2.5rem;cursor:pointer;flex-direction:column;justify-content:center;gap:5px;align-items:center}
+.burger span{display:block;width:20px;height:1.5px;background:var(--ink);transition:transform .2s var(--ease-out),opacity .15s ease}
+.nav.open .burger span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav.open .burger span:nth-child(2){opacity:0}
+.nav.open .burger span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* icons */
+.ico{width:1.35rem;height:1.35rem;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
+.ico .fill{fill:var(--blush)}
+.ico .soft{fill:var(--blush-soft)}
+
+/* page head */
+.page-head{padding:clamp(1.75rem,5vh,3rem) 0 clamp(2.5rem,6vh,4rem);display:grid;grid-template-columns:1.1fr .9fr;gap:2rem 4rem;align-items:end}
+.page-head h1{font-size:clamp(3rem,6.4vw,5.4rem);font-weight:300;text-wrap:wrap}
+.page-head h1 em{white-space:nowrap}
+.crumbs{grid-column:1/-1;margin-bottom:-.5rem}
+.crumbs ol{display:flex;flex-wrap:wrap;align-items:center;list-style:none;font-size:.85rem;letter-spacing:.02em}
+.crumbs li{display:flex;align-items:center}
+.crumbs li + li::before{content:"";width:.4rem;height:.4rem;margin:0 .8rem 0 .55rem;border-top:1px solid var(--gold);border-right:1px solid var(--gold);transform:rotate(45deg)}
+.crumbs a{color:var(--ink-2);padding:.4rem 0;text-decoration:underline;text-decoration-color:transparent;transition:color .2s ease,text-decoration-color .2s ease}
+@media (hover:hover) and (pointer:fine){.crumbs a:hover{color:var(--ink);text-decoration-color:var(--gold)}}
+.crumbs [aria-current]{color:var(--rose-ink);font-weight:400}
+.page-head .lede{font-size:1.1rem;margin-bottom:1.6rem}
+.filters{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font:inherit;font-size:.8rem;font-weight:400;letter-spacing:.04em;padding:.5rem .95rem;border-radius:999px;border:1px solid var(--gold-line);background:transparent;color:var(--ink);cursor:pointer;display:inline-flex;gap:.45rem;align-items:center;transition:background .15s ease,border-color .15s ease,color .15s ease,transform .16s var(--ease-out)}
+.chip small{font-size:.72rem;color:var(--gold-ink);font-variant-numeric:tabular-nums}
+.chip:active{transform:scale(.97)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip[aria-pressed="true"] small{color:var(--blush)}
+@media (hover:hover) and (pointer:fine){.chip:hover{border-color:var(--gold)}}
+
+/* coming up */
+.next{display:grid;grid-template-columns:1fr 1fr;border-radius:16px;overflow:hidden;background:var(--ink);color:var(--paper);min-height:340px}
+.next-body{padding:clamp(1.6rem,4vw,2.8rem);display:flex;flex-direction:column;gap:1rem}
+.next-when{display:flex;align-items:baseline;gap:1rem}
+.next-when b{font-family:var(--f-display);font-weight:300;font-size:clamp(4rem,8vw,6rem);line-height:.85;color:var(--blush);font-variant-numeric:lining-nums}
+.next-when span{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(251,240,227,.86);line-height:1.6}
+.next h2{color:var(--paper);font-size:clamp(2rem,3.4vw,2.8rem);margin-top:auto}
+.next p{color:rgba(251,240,227,.8);font-size:.98rem;max-width:36ch}
+.next-foot{display:flex;flex-wrap:wrap;align-items:center;gap:.8rem;margin-top:.4rem}
+.soon{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;padding:.35rem .75rem;border-radius:999px;background:var(--blush-soft);color:var(--ink)}
+.soon:empty{display:none}
+.next .btn-line{border-color:rgba(251,240,227,.35);color:var(--paper)}
+@media (hover:hover) and (pointer:fine){.next .btn-line:hover{background:rgba(251,240,227,.08);border-color:var(--paper)}}
+.next-img{position:relative;min-height:260px;background:var(--blush-soft)}
+.next-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+/* months */
+.section{padding:clamp(3.5rem,8vh,5.5rem) 0}
+.month + .month{margin-top:clamp(3.5rem,8vh,5rem)}
+.month-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-bottom:1rem;margin-bottom:1.6rem;border-bottom:1px solid var(--gold-line)}
+.month-head h2{font-size:clamp(2rem,3.6vw,2.8rem)}
+.month-head span{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-ink);white-space:nowrap}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;list-style:none}
+
+/* card (as index.html recap) */
+.card{display:flex;flex-direction:column;border-radius:16px;overflow:hidden;background:var(--paper-2);border:1px solid var(--gold-line);transition:border-color .2s ease}
+.card figure{aspect-ratio:4/3;overflow:hidden;margin:.4rem;border-radius:12px;background:var(--sage-soft)}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease-out)}
+@media (hover:hover) and (pointer:fine){.card:hover{border-color:var(--gold)}.card:hover img{transform:scale(1.03)}}
+.card figure.no-photo{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding:1.1rem 1.2rem;background:var(--blush-soft);color:var(--ink)}
+.card figure.no-photo .ico{position:absolute;top:1rem;right:1rem;width:2.4rem;height:2.4rem;stroke-width:1.2}
+.nf-day{font-family:var(--f-display);font-weight:300;font-size:4.6rem;line-height:.8;color:var(--rose-ink);font-variant-numeric:lining-nums}
+.nf-mon{font-family:var(--f-display);font-style:italic;font-size:1.3rem;color:var(--ink);margin-top:.5rem}
+.card figure.no-photo.fellowship{background:#EFE0C6}
+.card figure.no-photo.leadership{background:var(--sage-soft)}
+.card-body{padding:.6rem 1.1rem 1.2rem;display:flex;flex-direction:column;gap:.4rem;flex:1}
+.card-meta{display:flex;align-items:center;justify-content:space-between;gap:.8rem}
+.pill{display:inline-block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;font-weight:500;padding:.3rem .65rem;border-radius:999px;color:var(--ink)}
+.pill.service{background:var(--sage-soft)}
+.pill.fellowship{background:#F6D9DD}
+.pill.leadership{background:#EFE0C6}
+.card time,.card .tbc{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);white-space:nowrap}
+.card h3{font-size:1.35rem;line-height:1.2;margin-top:.2rem}
+.card p{font-size:.92rem}
+.card .place{font-size:.8rem;color:var(--gold-ink);margin-top:auto;padding-top:.4rem}
+.empty{padding:3rem 0;text-align:center;font-family:var(--f-display);font-size:1.5rem;color:var(--ink)}
+
+/* screenshots (Google Meet) shown whole: the image is letterboxed on its own dark background, no hover zoom */
+.card figure.fit-whole{background:#131313}
+.card figure.fit-whole img{object-fit:contain}
+@media (hover:hover) and (pointer:fine){.card:hover figure.fit-whole img{transform:none}}
+.card figure.fit-whole.blur-bg{position:relative;isolation:isolate;background:var(--paper-2)}
+.card figure.fit-whole.blur-bg::before{content:"";position:absolute;inset:-24px;z-index:-1;background:var(--photo) center / cover no-repeat;filter:blur(16px) saturate(1.05);opacity:.85}
+.card figure.fit-whole.blur-bg img{position:relative}
+
+/* coming up: calendar of upcoming dates, a series (OSW) as its own block */
+.calendar{padding-top:clamp(3rem,7vh,4.5rem)}
+.cal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem 2rem;flex-wrap:wrap;margin-bottom:1.6rem}
+.cal-head h2{font-size:clamp(2.3rem,4.4vw,3.2rem)}
+.cal-head p{font-size:.92rem;max-width:36ch}
+.cal-month + .cal-month{margin-top:2.4rem}
+.cal-month h3{font-size:1.6rem;padding-bottom:.7rem;border-bottom:1px solid var(--gold-line)}
+.cal-month h3 em{font-style:italic;font-weight:300;color:var(--rose-ink)}
+.cal-list{list-style:none}
+.cal-row{display:grid;grid-template-columns:4.2rem 1fr auto;gap:1.2rem;align-items:center;padding:.95rem .2rem;border-bottom:1px solid var(--gold-line)}
+.cal-date b{display:block;font-family:var(--f-display);font-weight:400;font-size:2rem;line-height:1;color:var(--ink);font-variant-numeric:lining-nums tabular-nums}
+.cal-date span{display:block;margin-top:.2rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+.cal-what b{display:block;font-family:var(--f-display);font-weight:400;font-size:1.35rem;line-height:1.2;color:var(--ink)}
+.cal-what span{display:block;font-size:.88rem;color:var(--ink-2);margin-top:.1rem}
+.cal-tag{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink);white-space:nowrap}
+.cal-series{margin:1rem 0 .2rem;border-radius:16px;background:var(--blush-soft);padding:.4rem 1.1rem .3rem}
+.cal-series-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.8rem .2rem .7rem;border-bottom:1px solid var(--blush-line)}
+.cal-series-head b{font-family:var(--f-display);font-weight:400;font-size:1.45rem;color:var(--ink)}
+.cal-series-head span{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose-ink);white-space:nowrap}
+.cal-series .cal-row{border-bottom-color:var(--blush-line)}
+.cal-series .cal-row:last-child{border-bottom:0}
+.cal-series .cal-date b{color:var(--rose-ink)}
+.empty[hidden],.card[hidden],.month[hidden]{display:none}
+
+/* closing band: image runs into the bottom edge */
+.closing{padding:0 .75rem}
+.band{position:relative;border-radius:36px 36px 0 0;overflow:hidden;background:url("images/closing.webp") center 35% / cover no-repeat,#DCE4CF}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(30,51,36,.25) 0%,rgba(30,51,36,.7) 45%,#1E3324 88%)}
+.band > *{position:relative;z-index:1}
+.band-cta{text-align:center;padding:clamp(4rem,10vh,6.5rem) 1.5rem 3rem;display:grid;justify-items:center;gap:1.2rem}
+.band-cta h2{color:var(--paper);font-size:clamp(2.2rem,4.6vw,3.6rem)}
+.band-cta h2 em{color:var(--blush)}
+.band-cta p{color:rgba(251,240,227,.86);max-width:40ch}
+footer{color:var(--paper);padding:2rem clamp(1.5rem,4vw,3rem) max(2rem,env(safe-area-inset-bottom))}
+footer .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:1.5rem;padding-bottom:1.6rem;border-bottom:1px solid rgba(251,240,227,.22)}
+footer .big{font-family:var(--f-display);font-weight:300;font-size:clamp(2.2rem,6vw,4.6rem);line-height:1;color:var(--paper)}
+footer .big em{color:var(--sage);font-style:italic}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.4rem;font-size:.9rem}
+.foot-links a{opacity:.85}
+@media (hover:hover) and (pointer:fine){.foot-links a:hover{opacity:1}}
+footer .bottom{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem;padding-top:1.2rem;font-size:.78rem;color:rgba(251,240,227,.72)}
+
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease-out),transform .5s var(--ease-out)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal{transform:none;transition:opacity .2s ease}
+  .btn,.chip,.card,.card img{transition:none}
+}
+
+@media (max-width:960px){
+  .nav-links{position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--paper);border-bottom:1px solid var(--gold-line);padding:.5rem 1.5rem 1.2rem;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .18s ease,transform .18s var(--ease-out),visibility 0s .18s}
+  .nav.open .nav-links{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  .nav-links li{width:100%}
+  .nav-links a{display:block;padding:.8rem 0;font-size:1.05rem}
+  .nav-links a[aria-current]::after{display:none}
+  .nav-links .btn{margin-top:.6rem;display:inline-flex}
+  .burger{display:flex}
+  .page-head{grid-template-columns:1fr;align-items:start}
+  .grid{grid-template-columns:repeat(2,1fr)}
+}
+@media (max-width:760px){
+  body{font-size:1rem}
+  .brand span{font-size:1.1rem}
+  .next{grid-template-columns:1fr}
+  .cal-row{grid-template-columns:3.4rem 1fr;gap:.9rem}
+  .cal-tag{grid-column:2;margin-top:-.4rem}
+  .cal-date b{font-size:1.7rem}
+  .cal-what b{font-size:1.2rem}
+  .cal-series{padding:.3rem .8rem .2rem}
+  .cal-series-head{flex-direction:column;gap:.2rem}
+  .next-img{order:-1;min-height:0;aspect-ratio:16/10}
+  .grid{grid-template-columns:1fr}
+  .closing{padding:0 .5rem}
+  .band{border-radius:26px 26px 0 0}
+  footer{padding:1.5rem 1.25rem max(1.5rem,env(safe-area-inset-bottom))}
+}
+</style>
+<style>
+/* Month calendars (added 18 Sep 2026). The "Coming up" list now sits after the past
+   events, so the home page links to events.html#calendar still land on it. */
+/* Note text on a month card: sage-deep reads 2.6:1 on paper-2, too pale for 11px, so the
+   sage months get a deeper leaf green (4.8:1). The other three tones already pass. */
+:root{--sage-ink:#556B4A}
+.calendar{padding-bottom:clamp(3rem,7vh,4.5rem);scroll-margin-top:5.5rem}
+.calgrid{padding-top:clamp(2.5rem,6vh,4rem)}
+.cg-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1rem 2rem;flex-wrap:wrap;margin-bottom:1.8rem}
+.cg-head h2{font-size:clamp(2.3rem,4.4vw,3.2rem)}
+.cg-head p{font-size:.92rem;max-width:30ch}
+.cg-head a{display:inline-block;white-space:nowrap;font-size:.88rem;color:var(--gold-ink);border-bottom:1px solid var(--gold-line);padding-bottom:.1rem}
+@media (hover:hover) and (pointer:fine){.cg-head a:hover{border-bottom-color:var(--gold)}}
+
+.cg-month{--cg-accent:var(--sage-ink);--cg-plate:var(--sage-soft);position:relative;
+  border:1px solid var(--gold-line);border-radius:24px;background:var(--paper-2);
+  padding:clamp(1.3rem,3vw,2.4rem) clamp(1rem,2.6vw,2.4rem) clamp(1.2rem,2.6vw,1.8rem)}
+.cg-month.blush{--cg-accent:var(--rose-ink);--cg-plate:var(--blush-soft)}
+.cg-month.gold{--cg-accent:var(--gold-ink);--cg-plate:#EFE0C6}
+.cg-month.rose{--cg-accent:var(--rose-ink);--cg-plate:#F1DED0}
+.cg-month + .cg-month{margin-top:clamp(2rem,5vh,3rem)}
+.cg-title{text-align:center;font-family:var(--f-display);font-style:italic;font-weight:300;
+  font-size:clamp(2.6rem,6vw,4rem);line-height:1;color:var(--ink)}
+.cg-year{max-width:none;text-align:center;margin-top:.5rem;font-size:.7rem;letter-spacing:.24em;
+  color:var(--cg-accent);font-variant-numeric:lining-nums tabular-nums}
+.cg-art{margin:1.1rem auto 1.1rem;aspect-ratio:16/6.5;border-radius:16px;overflow:hidden;
+  background:var(--cg-plate);position:relative;display:grid;place-items:center}
+.cg-art img{width:100%;height:100%;object-fit:cover}
+.cg-art.plate-only{aspect-ratio:16/4.2}
+.cg-art .plate{width:min(30%,150px);height:auto;opacity:.5;object-fit:contain;mix-blend-mode:multiply}
+.cg-grid{display:grid;grid-template-columns:repeat(7,1fr);margin-top:1.4rem}
+.cg-dow{font-family:var(--f-display);font-style:italic;font-weight:300;font-size:clamp(1rem,2vw,1.5rem);
+  text-align:center;color:var(--ink);padding-bottom:.6rem;border-bottom:1px solid var(--gold-line)}
+.cg-cell{position:relative;min-height:5rem;padding:.5rem .35rem .7rem;text-align:center;border-bottom:1px solid var(--gold-line)}
+.cg-cell.pad{min-height:0}
+.cg-grid .cg-cell:nth-last-child(-n+7){border-bottom:0}
+.cg-day{display:block;font-size:.9rem;font-variant-numeric:lining-nums tabular-nums;color:var(--ink)}
+.cg-cell.today .cg-day{display:inline-block;min-width:1.7em;border-radius:999px;background:var(--ink);color:var(--paper)}
+.cg-cell.past .cg-day{color:var(--ink-2)}
+.cg-note{display:block;margin-top:.3rem;font-size:.72rem;line-height:1.3;color:var(--cg-accent);text-wrap:balance}
+.cg-note + .cg-note{margin-top:.25rem}
+.cg-note.done{color:var(--ink-2)}
+.cg-note.tent::after{content:"*"}
+.cg-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:.8rem;margin-top:1.1rem}
+.cg-foot p{font-size:.76rem;color:var(--gold-ink)}
+.cg-save{font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;padding:.6rem 1.1rem;
+  border:1px solid var(--gold-line);border-radius:999px;background:transparent;color:var(--ink);
+  font-family:inherit;cursor:pointer;transition:border-color .2s ease,background .2s ease,transform .12s ease}
+.cg-save:active{transform:scale(.97)}
+.cg-save[disabled]{opacity:.6;cursor:default}
+.cg-save:focus-visible,.cg-head a:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:999px}
+@media (hover:hover) and (pointer:fine){.cg-save:hover{border-color:var(--gold);background:var(--paper)}}
+
+/* narrow screens: the cells only carry dots, the month's dates read as a short list */
+.cg-key{position:absolute;width:1px;height:1px;margin:-1px;padding:0;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;list-style:none}
+.cg-key li{display:grid;grid-template-columns:2.6rem 1fr;gap:.7rem;padding:.6rem .1rem;border-bottom:1px solid var(--gold-line)}
+.cg-key b{font-family:var(--f-display);font-weight:400;font-size:1.1rem;color:var(--cg-accent);font-variant-numeric:lining-nums}
+.cg-key span{font-size:.86rem;color:var(--ink)}
+.cg-dot{display:none;position:absolute;left:50%;bottom:.55rem;width:.42rem;height:.42rem;
+  margin-left:-.21rem;border-radius:999px;background:var(--cg-accent)}
+.cg-cell.past .cg-dot{background:var(--ink-2)}
+@media (max-width:700px){
+  .cg-month{padding:1.1rem .7rem 1.2rem;border-radius:18px}
+  .cg-grid{margin-top:1rem}
+  .cg-cell{min-height:2.9rem;padding:.4rem .1rem .5rem}
+  .cg-note{display:none}
+  .cg-dot{display:block}
+  .cg-key{position:static;width:auto;height:auto;margin:1rem 0 0;overflow:visible;
+    clip-path:none;white-space:normal;border-top:1px solid var(--gold-line)}
+  .cg-art{aspect-ratio:16/9}
+}
+@media (prefers-reduced-motion:reduce){.cg-save{transition:none}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="i-service" viewBox="0 0 24 24">
+    <g class="soft">
+      <path d="M12 12C9.2 10.2 8.6 6.2 12 3.4 15.4 6.2 14.8 10.2 12 12Z"/>
+      <path d="M12 12C9.2 10.2 8.6 6.2 12 3.4 15.4 6.2 14.8 10.2 12 12Z" transform="rotate(72 12 12)"/>
+      <path d="M12 12C9.2 10.2 8.6 6.2 12 3.4 15.4 6.2 14.8 10.2 12 12Z" transform="rotate(144 12 12)"/>
+      <path d="M12 12C9.2 10.2 8.6 6.2 12 3.4 15.4 6.2 14.8 10.2 12 12Z" transform="rotate(216 12 12)"/>
+      <path d="M12 12C9.2 10.2 8.6 6.2 12 3.4 15.4 6.2 14.8 10.2 12 12Z" transform="rotate(288 12 12)"/>
+    </g>
+    <circle class="fill" cx="12" cy="12" r="2.1"/>
+  </symbol>
+  <symbol id="i-fellowship" viewBox="0 0 24 24">
+    <path class="fill" d="M12 7.39A5.5 5.5 0 0 1 12 16.61 5.5 5.5 0 0 1 12 7.39Z" stroke="none"/>
+    <circle cx="9" cy="12" r="5.5"/>
+    <circle cx="15" cy="12" r="5.5"/>
+  </symbol>
+  <symbol id="i-leadership" viewBox="0 0 24 24">
+    <g class="soft">
+      <ellipse cx="7.1" cy="9.4" rx="4.6" ry="1.7" transform="rotate(-14 7.1 9.4)"/>
+      <ellipse cx="16.9" cy="9.4" rx="4.6" ry="1.7" transform="rotate(14 16.9 9.4)"/>
+      <ellipse cx="7.7" cy="12.6" rx="3.9" ry="1.45" transform="rotate(14 7.7 12.6)"/>
+      <ellipse cx="16.3" cy="12.6" rx="3.9" ry="1.45" transform="rotate(-14 16.3 12.6)"/>
+    </g>
+    <path d="M12 7.2V20.6"/>
+    <circle class="fill" cx="12" cy="5.3" r="1.6"/>
+  </symbol>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Leo Club of Aurelian, home">
+      <img src="images/logo-96.webp" alt="" width="96" height="91">
+      <span>Leo Club of Aurelian</span>
+    </a>
+    <button class="burger" id="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#motto">The promise</a></li>
+      <li><a href="index.html#recap">Recap</a></li>
+      <li><a href="index.html#team">Team</a></li>
+      <li><a href="events.html" aria-current="page">Events</a></li>
+      <li><a class="btn btn-blush" href="index.html#join">Become a member</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+  <div class="wrap page-head">
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><span aria-current="page">Events</span></li>
+      </ol>
+    </nav>
+    <h1 class="reveal">Every event, <em>so far.</em></h1>
+    <div class="reveal">
+      <p class="lede" id="pageLede">Service drives, ceremonies and meetings, newest first.</p>
+      <div class="filters" id="filters" role="group" aria-label="Filter events by kind"></div>
+    </div>
+  </div>
+
+  <section class="wrap" id="next" aria-labelledby="nextTitle"></section>
+
+  <section class="wrap calgrid" id="calgrid" aria-labelledby="calgridTitle" hidden></section>
+
+  <section class="section" aria-label="Past events">
+    <div class="wrap">
+      <div id="months"></div>
+      <p class="empty" id="empty" hidden>No events of this kind yet.</p>
+      <noscript><p class="empty">Turn on JavaScript to see the list of events.</p></noscript>
+    </div>
+  </section>
+
+  <section class="wrap calendar" id="calendar" aria-labelledby="calTitle" hidden></section>
+</main>
+
+<div class="closing">
+  <div class="band">
+    <div class="band-cta">
+      <h2>Be in the next <em>photo.</em></h2>
+      <p>Join the club and help run the events on this page.</p>
+      <a class="btn btn-blush" href="index.html#join">Become a member</a>
+    </div>
+    <footer>
+      <div class="top">
+        <p class="big">Built on <em>bonds.</em></p>
+        <nav class="foot-links" aria-label="Footer">
+          <a href="index.html#motto">The promise</a><a href="index.html#recap">Recap</a><a href="index.html#team">Team</a><a href="index.html#events">What's on</a><a href="index.html#join">Join</a>
+        </nav>
+      </div>
+      <div class="bottom">
+        <span>Leo Club of Aurelian · MD 3231 A4 · India</span>
+        <a href="https://www.instagram.com/lco_aurelian/" target="_blank" rel="noopener">@lco_aurelian on Instagram</a>
+      </div>
+    </footer>
+  </div>
+</div>
+
+<script>
+/* Month calendars above the list (added 18 Sep 2026). Runs before the main script so its
+   reveal observer sees the rendered cards. Facts come from data/club.js. */
+(function(){
+  var C=window.CLUB, host=document.getElementById('calgrid');
+  if(!C||!host) return;
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var DOW=['Sun','Mon','Tues','Wed','Thurs','Fri','Sat'];
+  var TONE=[
+    {key:'sage', ink:'#556B4A', plate:'#DCE5D2'},
+    {key:'blush',ink:'#8E4255', plate:'#F6D9DD'},
+    {key:'gold', ink:'#7E5F3A', plate:'#EFE0C6'},
+    {key:'rose', ink:'#8E4255', plate:'#F1DED0'}
+  ];
+  var CREST='images/logo-340.webp';
+  function esc(t){ var d=document.createElement('div'); d.textContent=t==null?'':t; return d.innerHTML; }
+  function iso(d){ return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); }
+  function tone(key){ return TONE[(+key.slice(5,7)-1)%TONE.length]; }
+  function art(key){ var a=C.calendarArt||{}; var v=a[key]; if(v===undefined) v=a[key.slice(5,7)]; return v||null; }
+
+  var today=new Date(); today.setHours(0,0,0,0);
+  var todayIso=iso(today);
+  var future=(C.upcoming||[]).filter(function(e){ return e.date && e.date>=todayIso; });
+  if(!future.length){ host.remove(); return; }
+
+  /* one calendar per month that has something coming up, the current month always first */
+  var keys=[], seen={};
+  function push(k){ if(!seen[k]){ seen[k]=1; keys.push(k); } }
+  push(todayIso.slice(0,7));
+  future.forEach(function(e){ push(e.date.slice(0,7)); });
+  keys.sort();
+
+  /* every dated fact of a month: what is coming, and what already happened */
+  function itemsOf(key){
+    var out={};
+    function add(day,title,kind,tentative){
+      (out[day]=out[day]||[]).push({title:title,kind:kind,tentative:!!tentative});
+    }
+    future.forEach(function(e){ if(e.date.slice(0,7)===key) add(+e.date.slice(8,10), e.short||e.title, 'next', e.tentative); });
+    (C.events||[]).forEach(function(e){ if(e.date && e.date.slice(0,7)===key) add(+e.date.slice(8,10), e.short||e.title, 'done', false); });
+    return out;
+  }
+
+  var cards=keys.map(function(key){
+    var y=+key.slice(0,4), m=+key.slice(5,7)-1, t=tone(key), items=itemsOf(key);
+    var first=new Date(y,m,1).getDay(), days=new Date(y,m+1,0).getDate();
+    var picture=art(key), cells='', i, d;
+    for(i=0;i<first;i++) cells+='<div class="cg-cell pad"></div>';
+    for(d=1;d<=days;d++){
+      var list=items[d]||[], dIso=key+'-'+String(d).padStart(2,'0');
+      var cls='cg-cell'+(dIso===todayIso?' today':dIso<todayIso?' past':'');
+      cells+='<div class="'+cls+'"><span class="cg-day">'+d+'</span>'+
+        list.map(function(it){
+          return '<span class="cg-note'+(it.kind==='done'?' done':'')+(it.tentative?' tent':'')+'">'+esc(it.title)+'</span>';
+        }).join('')+
+        (list.length?'<span class="cg-dot" aria-hidden="true"></span>':'')+'</div>';
+    }
+    var tail=(7-((first+days)%7))%7;
+    for(i=0;i<tail;i++) cells+='<div class="cg-cell pad"></div>';
+
+    var keyRows=Object.keys(items).sort(function(a,b){ return a-b; }).map(function(d){
+      return '<li><b>'+d+'</b><span>'+items[d].map(function(it){ return esc(it.title)+(it.tentative?'*':''); }).join(' · ')+'</span></li>';
+    }).join('');
+    var anyTent=Object.keys(items).some(function(d){ return items[d].some(function(it){ return it.tentative; }); });
+
+    return '<section class="cg-month '+t.key+' reveal" data-key="'+key+'">'+
+      '<h3 class="cg-title">'+MONTHS[m]+'</h3><p class="cg-year">'+y+'</p>'+
+      '<div class="cg-art'+(picture?'':' plate-only')+'">'+(picture
+        ? '<img src="'+esc(picture)+'" alt="" loading="lazy">'
+        : '<img class="plate" src="'+CREST+'" alt="" width="340" height="322" loading="lazy">')+'</div>'+
+      '<div class="cg-grid" aria-hidden="true">'+
+        DOW.map(function(n){ return '<div class="cg-dow">'+n+'</div>'; }).join('')+cells+
+      '</div>'+
+      (keyRows?'<ul class="cg-key">'+keyRows+'</ul>':'')+
+      '<div class="cg-foot"><p>'+(anyTent?'* tentative, dates can still change':'')+'</p>'+
+        '<button class="cg-save" type="button" data-save="'+key+'">Save as image</button></div>'+
+      '</section>';
+  }).join('');
+
+  host.innerHTML='<div class="cg-head reveal"><h2 id="calgridTitle">The <em>calendar.</em></h2>'+
+    '<p>Month by month, everything on the plan. <a href="#calendar">Read it as a list</a></p></div>'+cards;
+  host.hidden=false;
+
+  /* ---- save one month as a PNG, drawn on a canvas with the page fonts ---- */
+  var W=600, H=860, S=2, PAD=50, COL=(W-PAD*2)/7;
+  function loadImg(src){
+    return new Promise(function(res,rej){
+      var im=new Image(); im.onload=function(){ res(im); }; im.onerror=rej; im.src=src;
+    });
+  }
+  function cover(ctx,im,x,y,w,h){
+    var r=Math.max(w/im.width,h/im.height), iw=im.width*r, ih=im.height*r;
+    ctx.drawImage(im,x+(w-iw)/2,y+(h-ih)/2,iw,ih);
+  }
+  function clipPlate(ctx,x,y,w,h,r){
+    ctx.beginPath();
+    if(ctx.roundRect) ctx.roundRect(x,y,w,h,r); else ctx.rect(x,y,w,h);
+  }
+  function lines(ctx,text,maxW,maxLines){
+    var words=String(text).split(/\s+/), out=[], line='', i;
+    for(i=0;i<words.length;i++){
+      var t=line?line+' '+words[i]:words[i];
+      if(ctx.measureText(t).width>maxW && line){ out.push(line); line=words[i]; }
+      else line=t;
+    }
+    if(line) out.push(line);
+    if(out.length>maxLines){
+      out=out.slice(0,maxLines);
+      out[maxLines-1]=out[maxLines-1].replace(/[\s,.:;]*\S*$/,'…');
+    }
+    return out;
+  }
+  function track(ctx,text,x,y,gap){
+    /* letter spacing by hand: ctx.letterSpacing is not in every browser yet */
+    var chars=String(text).split(''), w=0, i;
+    for(i=0;i<chars.length;i++) w+=ctx.measureText(chars[i]).width+gap;
+    w-=gap;
+    var cx=x-w/2, save=ctx.textAlign;
+    ctx.textAlign='left';
+    for(i=0;i<chars.length;i++){ ctx.fillText(chars[i],cx,y); cx+=ctx.measureText(chars[i]).width+gap; }
+    ctx.textAlign=save;
+  }
+
+  function draw(key){
+    var y=+key.slice(0,4), m=+key.slice(5,7)-1, t=tone(key), items=itemsOf(key);
+    var first=new Date(y,m,1).getDay(), days=new Date(y,m+1,0).getDate();
+    var rows=Math.ceil((first+days)/7), picture=art(key);
+    var cv=document.createElement('canvas');
+    cv.width=W*S; cv.height=H*S;
+    var ctx=cv.getContext('2d');
+    ctx.scale(S,S);
+    ctx.fillStyle='#FBF0E3'; ctx.fillRect(0,0,W,H);
+    ctx.textAlign='center'; ctx.textBaseline='alphabetic';
+
+    ctx.fillStyle='#1E3324';
+    ctx.font='italic 300 56px "Cormorant Garamond", Georgia, serif';
+    ctx.fillText(MONTHS[m],W/2,88);
+    ctx.fillStyle=t.ink;
+    ctx.font='300 12px Jost, Arial, sans-serif';
+    track(ctx,String(y),W/2,108,2.4);
+
+    var ax=PAD, ay=124, aw=W-PAD*2, ah=200;
+    ctx.save(); clipPlate(ctx,ax,ay,aw,ah,14); ctx.clip();
+    ctx.fillStyle=t.plate; ctx.fillRect(ax,ay,aw,ah);
+    return loadImg(picture||CREST).then(function(im){
+      if(picture) cover(ctx,im,ax,ay,aw,ah);
+      else {
+        ctx.globalAlpha=.5;
+        var cw=aw*.26, ch=cw*(im.height/im.width);
+        ctx.drawImage(im,ax+(aw-cw)/2,ay+(ah-ch)/2,cw,ch);
+        ctx.globalAlpha=1;
+      }
+      ctx.restore();
+
+      ctx.fillStyle='#7E5F3A';
+      ctx.font='300 11px Jost, Arial, sans-serif';
+      track(ctx,'LCOA CALENDAR',W/2,354,2.6);
+      ctx.strokeStyle='#DCC3A3'; ctx.lineWidth=.8;
+      ctx.beginPath();
+      ctx.moveTo(PAD,350); ctx.lineTo(PAD+110,350);
+      ctx.moveTo(W-PAD-110,350); ctx.lineTo(W-PAD,350);
+      ctx.stroke();
+
+      ctx.fillStyle='#1E3324';
+      ctx.font='italic 300 21px "Cormorant Garamond", Georgia, serif';
+      for(var i=0;i<7;i++) ctx.fillText(DOW[i],PAD+COL*i+COL/2,398);
+
+      var top=412, rh=Math.min(74,(H-top-46)/rows);
+      ctx.strokeStyle='#DCC3A3';
+      ctx.beginPath(); ctx.moveTo(PAD,top-4); ctx.lineTo(W-PAD,top-4); ctx.stroke();
+
+      for(var d=1;d<=days;d++){
+        var slot=first+d-1, cx=PAD+COL*(slot%7)+COL/2, cy=top+rh*Math.floor(slot/7);
+        var dIso=key+'-'+String(d).padStart(2,'0');
+        ctx.font='300 13px Jost, Arial, sans-serif';
+        if(dIso===todayIso){
+          ctx.fillStyle='#1E3324';
+          ctx.beginPath(); ctx.arc(cx,cy+12,10,0,Math.PI*2); ctx.fill();
+          ctx.fillStyle='#FBF0E3';
+        }else ctx.fillStyle=dIso<todayIso?'#4F5F4F':'#1E3324';
+        ctx.fillText(String(d),cx,cy+17);
+
+        var list=items[d]||[], ny=cy+30;
+        ctx.font='300 9.5px Jost, Arial, sans-serif';
+        for(var k=0;k<list.length;k++){
+          ctx.fillStyle=list[k].kind==='done'?'#4F5F4F':t.ink;
+          var ls=lines(ctx,list[k].title+(list[k].tentative?'*':''),COL-8,list.length>1?2:4);
+          for(var l=0;l<ls.length;l++){ ctx.fillText(ls[l],cx,ny); ny+=11; }
+          ny+=2;
+        }
+      }
+      for(var r=1;r<=rows;r++){
+        ctx.beginPath(); ctx.moveTo(PAD,top+rh*r-4); ctx.lineTo(W-PAD,top+rh*r-4); ctx.stroke();
+      }
+
+      ctx.fillStyle='#7E5F3A';
+      ctx.font='300 10px Jost, Arial, sans-serif';
+      var tent=Object.keys(items).some(function(d){ return items[d].some(function(it){ return it.tentative; }); });
+      track(ctx,'LEO CLUB OF AURELIAN  ·  @LCO_AURELIAN'+(tent?'  ·  * TENTATIVE':''),W/2,H-22,1.8);
+      return cv;
+    });
+  }
+
+  function fonts(){
+    if(!document.fonts) return Promise.resolve();
+    return Promise.all([
+      document.fonts.load('italic 300 56px "Cormorant Garamond"'),
+      document.fonts.load('300 13px Jost')
+    ]).then(function(){ return document.fonts.ready; });
+  }
+
+  host.addEventListener('click',function(ev){
+    var b=ev.target.closest('[data-save]');
+    if(!b) return;
+    var key=b.getAttribute('data-save'), label=b.textContent;
+    b.disabled=true; b.textContent='Saving…';
+    fonts().then(function(){ return draw(key); }).then(function(cv){
+      return new Promise(function(res){ cv.toBlob(res,'image/png'); });
+    }).then(function(blob){
+      var url=URL.createObjectURL(blob), a=document.createElement('a');
+      a.href=url; a.download='LCOA-calendar-'+key+'.png';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function(){ URL.revokeObjectURL(url); },4000);
+      b.disabled=false; b.textContent=label;
+    })['catch'](function(){
+      b.disabled=false; b.textContent='Try again';
+    });
+  });
+})();
+</script>
+<script>
+(function(){
+  var C=window.CLUB;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var MONTHS=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  var LABEL={service:'Service',fellowship:'Fellowship',leadership:'Leadership'};
+  var WORDS=['No','One','Two','Three','Four','Five','Six','Seven','Eight','Nine','Ten','Eleven','Twelve','Thirteen','Fourteen','Fifteen','Sixteen','Seventeen','Eighteen','Nineteen','Twenty'];
+
+  /* nav */
+  var nav=document.getElementById('nav'), burger=document.getElementById('burger');
+  burger.addEventListener('click',function(){
+    var open=nav.classList.toggle('open');
+    burger.setAttribute('aria-expanded',open?'true':'false');
+    burger.setAttribute('aria-label',open?'Close menu':'Open menu');
+  });
+  function onScroll(){nav.classList.toggle('scrolled',window.scrollY>8);}
+  onScroll(); window.addEventListener('scroll',onScroll,{passive:true});
+
+  if(!C) return;
+  function esc(t){ var d=document.createElement('div'); d.textContent=t==null?'':t; return d.innerHTML; }
+  function parts(iso){ var p=iso.split('-').map(Number); return {y:p[0],m:p[1]-1,d:p[2]}; }
+  function monthKey(e){ return e.date ? e.date.slice(0,7) : (e.month || 'tbc'); }
+
+  /* lede with the real count */
+  var n=C.events.length, dated=C.events.filter(function(e){return e.date;}).map(function(e){return e.date;}).sort();
+  var since=dated.length ? ' since '+MONTHS[parts(dated[0]).m]+' '+parts(dated[0]).y : '';
+  document.getElementById('pageLede').textContent=(WORDS[n]||n)+' events'+since+', across service, fellowship and leadership. Newest first.';
+
+  /* coming up: only dates from today on */
+  var now0=new Date();
+  var todayIso=now0.getFullYear()+'-'+String(now0.getMonth()+1).padStart(2,'0')+'-'+String(now0.getDate()).padStart(2,'0');
+  var future=(C.upcoming||[]).filter(function(e){ return e.date>=todayIso; });
+  var up=future[0], next=document.getElementById('next');
+  if(up){
+    var p=parts(up.date), today=new Date(); today.setHours(0,0,0,0);
+    var days=Math.round((new Date(p.y,p.m,p.d)-today)/864e5);
+    var soon= days>1 ? 'In '+days+' days' : days===1 ? 'Tomorrow' : days===0 ? 'Today' : '';
+    next.innerHTML=
+      '<article class="next reveal">'+
+        '<div class="next-body">'+
+          '<div class="next-when"><b>'+p.d+'</b><span>'+MONTHS[p.m]+'<br>'+p.y+'</span></div>'+
+          '<h2 id="nextTitle">'+esc(up.title)+'</h2>'+
+          '<p>'+esc(up.text)+'</p>'+
+          '<div class="next-foot"><span class="soon">'+soon+'</span>'+
+          '<a class="btn btn-line" href="https://www.instagram.com/lco_aurelian/" target="_blank" rel="noopener">Follow for updates</a></div>'+
+        '</div>'+
+        (up.photo ? '<div class="next-img"><img src="'+esc(up.photo)+'" alt="" fetchpriority="high"></div>' : '')+
+      '</article>';
+  }else{ next.remove(); }
+
+  /* calendar: every upcoming date by month; consecutive dates of a series (OSW) share one block */
+  var cal=document.getElementById('calendar');
+  if(future.length){
+    var DAYS=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+    var row=function(e){
+      var p=parts(e.date), wd=DAYS[new Date(p.y,p.m,p.d).getDay()];
+      return '<li class="cal-row"><div class="cal-date"><b>'+p.d+'</b><span>'+wd+'</span></div>'+
+        '<div class="cal-what"><b>'+esc(e.title)+'</b>'+(e.focus?'<span>'+esc(e.focus)+'</span>':'')+'</div>'+
+        '<span class="cal-tag">'+(e.tentative?'Tentative':'')+'</span></li>';
+    };
+    var months={}, order=[];
+    future.forEach(function(e){ var k=e.date.slice(0,7); if(!months[k]){ months[k]=[]; order.push(k); } months[k].push(e); });
+    var body=order.map(function(k){
+      var list=months[k], html='', i=0;
+      while(i<list.length){
+        if(!list[i].series){ html+='<ul class="cal-list">'+row(list[i])+'</ul>'; i++; continue; }
+        var s=list[i].series, block=[];
+        while(i<list.length && list[i].series===s){ block.push(list[i]); i++; }
+        var a=parts(block[0].date), z=parts(block[block.length-1].date);
+        html+='<div class="cal-series"><div class="cal-series-head"><b>'+esc(C.osw && C.osw.series===s && C.osw.name ? C.osw.name : s+' week')+'</b><span>'+a.d+' to '+z.d+' '+MONTHS[z.m]+' · '+block.length+' days</span></div>'+
+          '<ul class="cal-list">'+block.map(row).join('')+'</ul></div>';
+      }
+      return '<section class="cal-month reveal"><h3>'+MONTHS[+k.slice(5,7)-1]+' <em>'+k.slice(0,4)+'</em></h3>'+html.replace(/<\/ul><ul class="cal-list">/g,'')+'</section>';
+    }).join('');
+    var anyTentative=future.some(function(e){ return e.tentative; });
+    cal.innerHTML='<div class="cal-head reveal"><h2 id="calTitle">Coming <em>up.</em></h2>'+
+      (anyTentative?'<p>Dates marked tentative can still change. Follow @lco_aurelian for confirmations.</p>':'')+'</div>'+body;
+    cal.hidden=false;
+  }
+
+  /* filters */
+  var counts={all:n}; C.events.forEach(function(e){ counts[e.category]=(counts[e.category]||0)+1; });
+  var filters=document.getElementById('filters');
+  filters.innerHTML=['all','service','fellowship','leadership'].filter(function(k){return counts[k];}).map(function(k){
+    return '<button class="chip" type="button" data-f="'+k+'" aria-pressed="'+(k==='all')+'">'+(k==='all'?'All':LABEL[k])+'<small>'+counts[k]+'</small></button>';
+  }).join('');
+
+  /* months */
+  var groups=[], byKey={};
+  C.events.forEach(function(e){
+    var k=monthKey(e);
+    if(!byKey[k]){ byKey[k]={key:k,items:[]}; groups.push(byKey[k]); }
+    byKey[k].items.push(e);
+  });
+  groups.sort(function(a,b){ return a.key==='tbc' ? 1 : b.key==='tbc' ? -1 : b.key.localeCompare(a.key); });
+
+  function card(e){
+    var fig = e.photo
+      ? '<figure'+(e.fit==='contain'?' class="fit-whole'+(e.backdrop==='blur'?' blur-bg':'')+'"':'')+(e.backdrop==='blur'?' style="--photo:url('+esc(e.photo)+')"':'')+'><img src="'+esc(e.photo)+'" alt="'+esc(e.alt||'')+'" loading="lazy"></figure>'
+      : '<figure class="no-photo '+e.category+'" aria-hidden="true"><svg class="ico"><use href="#i-'+e.category+'"/></svg>'+
+          (e.date ? '<span class="nf-day">'+parts(e.date).d+'</span><span class="nf-mon">'+MONTHS[parts(e.date).m]+'</span>'
+                  : '<span class="nf-mon">'+(e.month ? MONTHS[+e.month.slice(5,7)-1] : 'Photos soon')+'</span>')+
+        '</figure>';
+    var when = e.date
+      ? '<time datetime="'+e.date+'">'+parts(e.date).d+' '+MONTHS[parts(e.date).m].slice(0,3)+'</time>'
+      : '<span class="tbc">'+(e.month?'Date soon':'')+'</span>';
+    return '<li class="card reveal" data-cat="'+e.category+'">'+fig+
+      '<div class="card-body"><div class="card-meta"><span class="pill '+e.category+'">'+LABEL[e.category]+'</span>'+when+'</div>'+
+      '<h3>'+esc(e.title)+'</h3><p>'+esc(e.text)+'</p>'+
+      ((e.place||e.cause) ? '<span class="place">'+esc(e.place||e.cause)+'</span>' : '')+
+      '</div></li>';
+  }
+  var months=document.getElementById('months');
+  months.innerHTML=groups.map(function(g){
+    var title = g.key==='tbc' ? 'Date to be <em>confirmed</em>' : MONTHS[+g.key.slice(5,7)-1]+' <em>'+g.key.slice(0,4)+'</em>';
+    return '<section class="month" data-month>'+
+      '<div class="month-head reveal"><h2>'+title+'</h2><span data-month-count></span></div>'+
+      '<ul class="grid">'+g.items.map(card).join('')+'</ul></section>';
+  }).join('');
+
+  function apply(f){
+    var any=false;
+    months.querySelectorAll('[data-month]').forEach(function(m){
+      var shown=0;
+      m.querySelectorAll('.card').forEach(function(c){ var on=f==='all'||c.dataset.cat===f; c.hidden=!on; if(on){ shown++; c.classList.add('in'); } });
+      m.hidden=!shown; any=any||!!shown;
+      m.querySelector('[data-month-count]').textContent=shown+(shown===1?' event':' events');
+    });
+    document.getElementById('empty').hidden=any;
+    filters.querySelectorAll('.chip').forEach(function(b){ b.setAttribute('aria-pressed',String(b.dataset.f===f)); });
+  }
+  filters.addEventListener('click',function(e){ var b=e.target.closest('.chip'); if(b) apply(b.dataset.f); });
+  apply('all');
+  months.querySelectorAll('.card').forEach(function(c){ c.classList.remove('in'); });
+
+  /* reveal */
+  var els=document.querySelectorAll('.reveal');
+  if(reduce||!('IntersectionObserver' in window)){ els.forEach(function(el){el.classList.add('in');}); return; }
+  var io=new IntersectionObserver(function(en){
+    en.forEach(function(x){ if(x.isIntersecting){ x.target.classList.add('in'); io.unobserve(x.target); } });
+  },{rootMargin:'0px 0px -6% 0px',threshold:.1});
+  els.forEach(function(el,i){
+    /* already on the first screen: show at once, so the page paints immediately (no fade to wait for) */
+    if(!reduce && el.getBoundingClientRect().top < window.innerHeight){
+      el.style.transition='none'; el.classList.add('in');
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ el.style.transition=''; }); });
+      return;
+    }
+    el.style.transitionDelay=(i%3)*50+'ms'; io.observe(el);
+  });
+})();
+</script>
+</body>
+</html>
