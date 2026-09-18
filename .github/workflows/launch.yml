@@ -1,0 +1,59 @@
+# Publishes the new site by fast-forwarding main to the launch branch.
+#
+# It runs once, at 05:30 UTC on 20 September 2026, which is 11:00 IST, the moment
+# the countdown on the home page reaches zero. It can also be run by hand from the
+# Actions tab at any time (Run workflow), which is the fallback if the schedule is
+# late: GitHub can delay a cron by several minutes when it is busy.
+#
+# It only ever fast-forwards. If main has moved on and launch no longer sits ahead
+# of it, the merge fails and nothing is pushed, by design.
+#
+# After the launch has happened, delete this file.
+
+name: Launch the new site
+
+on:
+  schedule:
+    - cron: '30 5 20 9 *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: launch
+  cancel-in-progress: false
+
+jobs:
+  launch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: main
+
+      - name: Fast-forward main to launch
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin launch:refs/remotes/origin/launch
+
+          if git merge-base --is-ancestor origin/launch HEAD; then
+            echo "main already contains launch. Nothing to do."
+            exit 0
+          fi
+
+          git merge --ff-only origin/launch
+          git push origin main
+          echo "Published. main is now $(git rev-parse --short HEAD)."
+
+      - name: Report
+        run: |
+          echo "### The new site is live" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "main: \`$(git rev-parse --short HEAD)\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "GitHub Pages rebuilds in about a minute. Check https://lcoaurelian.in/" >> "$GITHUB_STEP_SUMMARY"
