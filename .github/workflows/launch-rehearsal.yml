@@ -75,7 +75,7 @@ jobs:
             echo "### Launch rehearsal"
             echo ""
             if [ "${{ job.status }}" = "success" ]; then
-              echo "Everything is ready. The real run is scheduled for 11:00 IST on 20 September."
+              echo "Everything is ready. The real run is scheduled for 14:00 IST on 20 September."
             else
               echo "Something is wrong. Read the failed step above. Nothing was published either way."
             fi

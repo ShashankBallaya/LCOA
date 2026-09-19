@@ -1,6 +1,6 @@
 # Publishes the new site by fast-forwarding main to the launch branch.
 #
-# It runs once, at 05:30 UTC on 20 September 2026, which is 11:00 IST, the moment
+# It runs once, at 08:30 UTC on 20 September 2026, which is 14:00 IST, the moment
 # the countdown on the home page reaches zero. It can also be run by hand from the
 # Actions tab at any time (Run workflow), which is the fallback if the schedule is
 # late: GitHub can delay a cron by several minutes when it is busy.
@@ -14,7 +14,7 @@ name: Launch the new site
 
 on:
   schedule:
-    - cron: '30 5 20 9 *'
+    - cron: '30 8 20 9 *'
   workflow_dispatch:
     inputs:
       dry_run:
