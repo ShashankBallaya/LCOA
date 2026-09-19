@@ -70,12 +70,16 @@ a{color:inherit;text-decoration:none}
 .inner{position:relative;width:min(760px,100%);display:grid;justify-items:center;text-align:center}
 .crest{width:clamp(108px,17vw,168px);height:auto;filter:drop-shadow(0 18px 34px rgba(0,0,0,.35))}
 
-h1{font-family:var(--f-display);font-weight:300;line-height:1.24;
-  font-size:clamp(1.34rem,3.4vw,2.05rem);margin-top:clamp(1.2rem,3vh,1.8rem);
-  max-width:34ch;text-shadow:0 2px 26px rgba(20,34,24,.55);text-wrap:pretty}
+/* one sentence carries the announcement, the second explains it, both inside the h1 */
+h1{display:grid;justify-items:center;gap:clamp(.8rem,2vh,1.1rem);
+  margin-top:clamp(1.2rem,3vh,1.8rem);font-weight:300}
+h1 .say{font-family:var(--f-display);font-size:clamp(1.85rem,5.2vw,2.9rem);line-height:1.1;
+  letter-spacing:-.012em;max-width:19ch;text-wrap:balance;
+  text-shadow:0 2px 26px rgba(20,34,24,.55)}
+h1 .then{font-family:var(--f-sans);font-size:clamp(.95rem,2.2vw,1.06rem);line-height:1.6;
+  max-width:46ch;color:rgba(251,240,227,.88);text-wrap:pretty;
+  text-shadow:0 1px 18px rgba(20,34,24,.5)}
 h1 em{font-style:italic;color:var(--sage)}
-.lede{max-width:44ch;margin-top:1rem;font-size:clamp(.98rem,2.2vw,1.08rem);line-height:1.6;
-  color:rgba(251,240,227,.9);text-shadow:0 1px 18px rgba(20,34,24,.5)}
 
 .count{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.5rem,1.6vw,.9rem);
   width:min(560px,100%);margin-top:clamp(1.8rem,5vh,2.8rem)}
@@ -128,6 +132,32 @@ h1 em{font-style:italic;color:var(--sage)}
 @media (prefers-reduced-transparency:reduce){
   .tile{background:rgba(30,51,36,.72);backdrop-filter:none;-webkit-backdrop-filter:none}
 }
+/* short windows: the countdown is the payload, so the composition compresses to keep it in view */
+@media (max-height:800px){
+  .scene{padding-top:clamp(1.2rem,4vh,2.4rem);padding-bottom:calc(clamp(1.2rem,4vh,2.4rem) + env(safe-area-inset-bottom))}
+  .crest{width:clamp(78px,13vh,132px)}
+  h1{margin-top:clamp(.8rem,2.4vh,1.6rem);gap:clamp(.5rem,1.6vh,.9rem)}
+  h1 .say{font-size:clamp(1.55rem,4.6vh,2.5rem)}
+  h1 .then{font-size:clamp(.88rem,2.1vh,1rem)}
+  .count{margin-top:clamp(1rem,3.2vh,2rem)}
+  .num{font-size:clamp(1.75rem,5.6vh,2.9rem)}
+  .when{margin-top:1rem}
+  .rule{margin-top:1.1rem}
+  .foot{margin-top:1rem}
+  .tag{margin-top:1.1rem}
+}
+/* very short windows, such as an older small phone in portrait */
+@media (max-height:620px){
+  .crest{width:clamp(62px,11vh,100px)}
+  h1 .then{line-height:1.5}
+  .rule{margin-top:.9rem}
+  .foot{margin-top:.9rem}
+  .tag{margin-top:.9rem}
+}
+@media (max-width:520px){
+  /* keep the explaining line narrower than the display line above it */
+  h1 .then{max-width:31ch}
+}
 @media (max-width:420px){
   .count{gap:.45rem}
   .tile{border-radius:14px}
@@ -139,7 +169,8 @@ h1 em{font-style:italic;color:var(--sage)}
 <main class="scene">
   <div class="inner stage">
     <img class="crest" src="images/logo-700.webp" alt="" width="700" height="662" fetchpriority="high">
-    <h1>Leo Club of Aurelian is going to be installed on 20 September 2026. Our new site opens the same day, with every event we have run and everything that comes next.</h1>
+    <h1><span class="say">Leo Club of Aurelian is going to be installed on <em>20 September 2026</em>.</span>
+      <span class="then">Our new site opens the same day, with every event we have run and everything that comes next.</span></h1>
 
     <div class="count" id="count" role="timer" aria-hidden="true">
       <div class="tile"><span class="num" id="cdD">--</span><span class="lab">Days</span></div>
